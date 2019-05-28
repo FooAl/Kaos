@@ -1,10 +1,10 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
 
     def create
-        @user = User.find_by_credentials(params[:user][:discord_username], params[:user][:password])
+        @user = User.find_by_credentials(params[:discord_username], params[:password])
         if @user
             login!(@user)
-            render "api/users/show"
+            # render "api/users/show"
         else
             # render json: { error: ['invalid inputs']}, status 401
         end
