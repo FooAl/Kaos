@@ -1,0 +1,23 @@
+Started GET "/" for ::1 at 2019-05-28 14:29:26 -0400
+
+PG::ConnectionBad - FATAL:  database "Kaos_development" does not exist
+:
+
+Started POST "/__better_errors/d9ddaef5e0e786cb/variables" for ::1 at 2019-05-28 14:29:27 -0400
+Started GET "/" for ::1 at 2019-05-28 14:29:28 -0400
+
+PG::ConnectionBad - FATAL:  database "Kaos_development" does not exist
+:
+
+Started POST "/__better_errors/95c61f28ea9598c8/variables" for ::1 at 2019-05-28 14:29:31 -0400
+  [1m[35m (839.2ms)[0m  [1m[35mCREATE DATABASE "Kaos_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (309.3ms)[0m  [1m[35mCREATE DATABASE "Kaos_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-05-28 14:29:59 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3759ms (Views: 3746.4ms | ActiveRecord: 0.0ms)
+
+
