@@ -9,24 +9,24 @@ class Api::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save!
             login!(@user)
-            #redirect to me page
+            render :show
         else
             # render json: @users.errors.full_messages, status 401
         end
     end
 
     def edit
-        @user = User.find(params[:user][:id])
+        @user = User.find(params[:id])
         if @user.update_attributes(user_params)
-            #redirect to show
+            render :show
         else
             # render json: @users.errors.full_messages, status 401
         end
     end
 
     def show
-        @user = User.find(params[:user][:id])
-        #render show info
+        @user = User.find(params[:id])
+        render :show
     end
 
     private
