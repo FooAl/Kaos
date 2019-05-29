@@ -1,1 +1,1 @@
-json.extract! @user, :discord_username, :id, :profile_icon_url
+json.extract! @user, :discord_username, :id, :email, :profile_icon_url
