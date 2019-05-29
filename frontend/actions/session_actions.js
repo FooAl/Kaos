@@ -15,7 +15,8 @@ export const signUp = user => dispatch => {
 export const logIn = user => dispatch => {
     return(
         APIUtil.logIn(user)
-            .then(user => dispatch(receiveUser(user)),
+            .then(user => {
+                dispatch(receiveUser(user));},
                  errors=> dispatch(receiveErrors(errors)))
     );
 };

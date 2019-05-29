@@ -8,7 +8,7 @@ const mSP = (state, ownProps) => {
     return(
         {
             formType: 'Create an Account',
-            navLink: <Link to="/login">Already have an account?</Link>
+            navLink: <Link to="/api/login">Already have an account?</Link>
         }
     );
 };

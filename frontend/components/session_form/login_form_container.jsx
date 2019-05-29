@@ -9,7 +9,7 @@ const mSP = (state, ownProps) => {
         {
 
             formType: 'Welcome back!',
-            navLink: <Link to="/register">Register</Link>
+            navLink: <Link to="/api/register">Register</Link>
         }
     );
 };
