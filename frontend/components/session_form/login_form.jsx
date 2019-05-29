@@ -23,14 +23,14 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="loginPage">
-                <header className="loginPageHeader">
-                    <section className="loginPageHeaderLeft">
+            <div className="formPage">
+                <header className="formPageHeader">
+                    <section className="formPageHeaderLeft">
                         Logo
                     </section>
                 </header>
-                <section className="loginPageBody">
-                    <section className="loginForm">
+                <section className="formPageBody">
+                    <section className="formForm">
                         <h1>{this.props.formType}</h1>
                         <form onSubmit={this.handleSubmit}>
                             <label>

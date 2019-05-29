@@ -24,14 +24,14 @@ class SignupForm extends React.Component{
 
     render(){
         return (
-            <div className="signupPage">
-                <header className="signupPageHeader">
-                    <section className="signupPageHeaderLeft">
+            <div className="formPage">
+                <header className="formPageHeader">
+                    <section className="formPageHeaderLeft">
                         Logo
                     </section>
                 </header>
-                <section className="signupPageBody">
-                    <section className="signupForm">
+                <section className="formPageBody">
+                    <section className="formForm">
                         <h1>{this.props.formType}</h1>
                         <form onSubmit={this.handleSubmit}>
                             <label>
