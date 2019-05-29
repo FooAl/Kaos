@@ -8,7 +8,7 @@ export const signUp = user => dispatch => {
     return(
         APIUtil.signUp(user)
             .then(user => dispatch(receiveUser(user)),
-                 errors => dispatch(recieveErrors(errors)))
+                 errors => dispatch(receiveErrors(errors)))
     );
 };
 
@@ -16,7 +16,7 @@ export const logIn = user => dispatch => {
     return(
         APIUtil.logIn(user)
             .then(user => dispatch(receiveUser(user)),
-                 errors=> dispatch(recieveErrors(errors)))
+                 errors=> dispatch(receiveErrors(errors)))
     );
 };
 
