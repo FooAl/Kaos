@@ -9,31 +9,34 @@ class mainPage extends React.Component{
     render(){
         return(
             <div className="mainpage">
-                <head className="mainpageHeader">
+                <header className="mainpageHeader">
                     <section className="mainpageHeaderLeft">
                         Logo
                     </section>
                     <section className="mainpageHeaderRight">
                         <Link to="/api/login/" className="loginButton">Login</Link>
                     </section>
-                </head>
+                </header>
 
                 <section className="mainpageBody">
                     <section className="mainpageBodyText">
-                        <span className="mainpageBodyMaintext">It's time to only use Kaos, the one true discord clone.</span>
-                    <span className="mainpageBodySubtext">subtext</span>
-                    </section>
-                    <section className="mainpageBodyImages">
-                        images go here!
+                        <span className="mainpageBodyMaintext">It's time to only use Kaos</span>
+                    <span className="mainpageBodySubtext">We just happen to be the best on the market.</span>
                     </section>
                 </section>
 
+                <section className="mainpageDemo">
+                    <Link to="/" className="demoButton">Open Kaos in Browser</Link>
+                </section>
 
+                <section className="mainpageImages">
+                    <img src={window.mainpageImage} />
+                </section>
 
                 <footer className="mainpageFooter">
                     <section className="mainpageFooterLeft">
-                        Ready to try Kaos? It's Free!
-                        Join over 0 users today
+                        <span className="footerMain">Ready to try Kaos? It's free!</span>
+                        <span className="footerSub">Join over 0 users today</span>
                     </section>
 
                     <section className="mainpageFooterRight">
