@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class SignupForm extends React.Component{
     constructor(props){
@@ -29,6 +30,7 @@ class SignupForm extends React.Component{
                     <section className="formPageHeaderLeft">
                         Logo
                     </section>
+                    <Link to="/" onClick={() => this.props.logOut()}>Logout</Link>
                 </header>
                 <section className="formPageBody">
                     <section className="formForm">

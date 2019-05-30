@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import SignupForm from "./signup_form";
-import {signUp} from "../../actions/session_actions";
+import {signUp, logOut} from "../../actions/session_actions";
 import {Link} from "react-router-dom";
 
 const mSP = (state, ownProps) => {
@@ -17,6 +17,7 @@ const mDP = dispatch => {
     return(
         {
             signUp: user => dispatch(signUp(user)),
+            logOut: () => dispatch(logOut()),
         }
     );
 };

@@ -18,6 +18,7 @@ const mDP = dispatch => {
     return (
         {
             logIn: user => dispatch(logIn(user)),
+            logOut: () => dispatch(logOut()),
         }
     );
 };
