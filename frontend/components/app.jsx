@@ -11,8 +11,8 @@ const App = () => {
     return (
         <div className="mainView">
             <Switch>
-                <Route path="/api/register" component={SignupForm}/>
-                <Route path="/api/login" component={LoginForm}/>
+                <Route path="/register" component={SignupForm}/>
+                <Route path="/login" component={LoginForm}/>
                 {/* logged in */}
                 <Route path="/" component={MainPage}/>
             </Switch>

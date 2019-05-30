@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import LoginForm from "./login_form";
-import { logIn } from "../../actions/session_actions";
+import { logIn, logOut} from "../../actions/session_actions";
 import { Link } from "react-router-dom";
 
 const mSP = (state, ownProps) => {
@@ -9,7 +9,7 @@ const mSP = (state, ownProps) => {
         {
 
             formType: 'Welcome back!',
-            navLink: <Link to="/api/register">Register</Link>
+            navLink: <Link to="/register">Register</Link>
         }
     );
 };
