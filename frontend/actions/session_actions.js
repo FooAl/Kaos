@@ -13,7 +13,6 @@ export const signUp = user => dispatch => {
 };
 
 export const logIn = user => dispatch => {
-    debugger
     return(
         APIUtil.logIn(user)
             .then(user => {
@@ -23,7 +22,6 @@ export const logIn = user => dispatch => {
 };
 
 export const logOut = () => dispatch => {
-    debugger
     return(
         APIUtil.logOut().then(() => dispatch(logoutUser()))
     );

@@ -41,24 +41,27 @@ class SignupForm extends React.Component{
 
     render(){
         return (
-            <>
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    <span>email</span>
-                    <input type="text" onChange={this.update("email")} value={this.state.email}/>
-                </label>
-                <label>
-                    <span>username</span>
-                    <input type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
-                </label>
-                <label>
-                    <span>password</span>
-                    <input type="password" onChange={this.update("password")} value={this.state.password} />
-                </label>
-                <input type="submit" value="continue"/>
-            </form> 
-            <p onClick={this.changeForm}>Login instead</p>      
-            </>     
+            <section className="signupPageBody">
+                <section className="formForm">
+                <h1>Create an account</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        <span>email</span>
+                        <input type="text" onChange={this.update("email")} value={this.state.email}/>
+                    </label>
+                    <label>
+                        <span>username</span>
+                        <input type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
+                    </label>
+                    <label>
+                        <span>password</span>
+                        <input type="password" onChange={this.update("password")} value={this.state.password} />
+                    </label>
+                    <input type="submit" value="continue"/>
+                </form> 
+                <span onClick={this.changeForm}>Already have an account?</span>      
+                </section>
+            </section>     
         )
     }
 }

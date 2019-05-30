@@ -28,7 +28,10 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount(){
-        alert("Hey there");
+        // let base = document.getElementById("base");
+        // base.className = "";
+        // base.classList.add("formBG");
+        // alert("Hey there");
         // if (this.state.formType === "register"){
         //     this.setState({ form: <SignupForm /> });
         // } else if (this.state.formType === "login"){
@@ -36,6 +39,11 @@ class SessionForm extends React.Component {
         // } else {
         //     this.setState({form: (<p>error</p>) });
         // }
+    }
+
+    componentWillUnmount(){
+        // debugger
+        // document.getElementById("base").classList.remove("formBG");
     }
 
 
@@ -67,6 +75,11 @@ class SessionForm extends React.Component {
         }
         return (
             <div className="formPage">
+                <section id="background">
+                    <img className="under" src={window.formBG}/>
+                    <img className="top" src={window.formSplash}/>
+                </section>
+            {/* <div style="background-image: src:(url);"></div> */}
                 <header className="formPageHeader">
                     <section className="formPageHeaderLeft">
                         Logo
@@ -75,13 +88,7 @@ class SessionForm extends React.Component {
                     {/* <button onClick={this.update("formType")} value="register">Signup</button> */}
                     {/* <button onClick={this.update("formType")} value="login">Login</button> */}
                 </header>
-                <section className="formPageBody">
-                    <section className="formForm">
-                        <h1>{this.state.formType}</h1>
-                        {form}
-                        <span>{this.props.navLink}</span>
-                    </section>
-                </section>
+                {form}
             </div>
         )
 
