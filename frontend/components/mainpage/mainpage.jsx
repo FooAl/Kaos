@@ -14,7 +14,7 @@ class mainPage extends React.Component{
                         Logo
                     </section>
                     <section className="mainpageHeaderRight">
-                        <Link to="/api/login/" className="loginButton">Login</Link>
+                        <Link to="/login" className="loginButton">Login</Link>
                     </section>
                 </header>
 
@@ -40,7 +40,7 @@ class mainPage extends React.Component{
                     </section>
 
                     <section className="mainpageFooterRight">
-                        <Link to="/api/register/" className="signupButton">Sign Up Now</Link>
+                        <Link to="/register" className="signupButton">Sign Up Now</Link>
                     </section>
                 </footer>
             </div>
