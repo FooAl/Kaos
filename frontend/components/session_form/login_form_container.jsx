@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 const mSP = (state, ownProps) => {
     return (
         {
-
-            formType: 'Welcome back!',
             navLink: <Link to="/register">Register</Link>
         }
     );
@@ -23,4 +21,4 @@ const mDP = dispatch => {
     );
 };
 
-export default connect(mSP, mDP)(LoginForm);
+export default connect(null, mDP)(LoginForm);

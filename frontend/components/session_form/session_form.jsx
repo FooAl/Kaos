@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignupForm from "./signup_form";
-import LoginForm from "./login_form";
+import SignupForm from "./signup_form_container";
+import LoginForm from "./login_form_container";
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -54,15 +54,16 @@ class SessionForm extends React.Component {
                 // this.setState({ form: (<p>error</p>) });
             }
         }
+        
     }
 
     render() {
         let form = <p>loading...</p>
         if(this.state.formType === "register"){
-            form = <SignupForm/>
+            form = <SignupForm email={this.state.email} setEmail={this.setEmail} setFormType={this.setFormType}/>
         }
         else if(this.state.formType === "login"){
-            form = <LoginForm/>
+            form = <LoginForm email={this.state.email} setEmail={this.setEmail} setFormType={this.setFormType}/>
         }
         return (
             <div className="formPage">
@@ -71,28 +72,13 @@ class SessionForm extends React.Component {
                         Logo
                     </section>
                     <Link to="/" onClick={() => this.props.logOut()}>Logout</Link>
-                    <button onClick={this.update("formType")} value="register">Signup</button>
-                    <button onClick={this.update("formType")} value="login">Login</button>
+                    {/* <button onClick={this.update("formType")} value="register">Signup</button> */}
+                    {/* <button onClick={this.update("formType")} value="login">Login</button> */}
                 </header>
                 <section className="formPageBody">
                     <section className="formForm">
-                        <h1>{this.props.formType}</h1>
+                        <h1>{this.state.formType}</h1>
                         {form}
-                        {/* <form onSubmit={this.handleSubmit}>
-                            <label>
-                                <span>email</span>
-                                <input type="text" onChange={this.update("email")} value={this.state.email} />
-                            </label>
-                            <label>
-                                <span>username</span>
-                                <input type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
-                            </label>
-                            <label>
-                                <span>password</span>
-                                <input type="password" onChange={this.update("password")} value={this.state.password} />
-                            </label>
-                            <input type="submit" value="continue" />
-                        </form> */}
                         <span>{this.props.navLink}</span>
                     </section>
                 </section>

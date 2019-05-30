@@ -6,10 +6,12 @@ class SignupForm extends React.Component{
         super(props);
         this.state = {
             discord_username: "",
-            email: "",
+            email: this.props.email,
             password: "",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeForm = this.changeForm.bind(this);
+        
     }
 
     update(field){
@@ -23,8 +25,23 @@ class SignupForm extends React.Component{
         this.props.signUp(this.state);
     }
 
+    // componentWillUnmount(){
+    //     debugger
+    //     this.props.setEmail(this.state.email);
+    // }
+
+    // componentDidMount() {
+    //     debugger
+    // }
+    
+    changeForm() {
+        this.props.setEmail(this.state.email);
+        this.props.setFormType("login");
+    }
+
     render(){
         return (
+            <>
             <form onSubmit={this.handleSubmit}>
                 <label>
                     <span>email</span>
@@ -39,7 +56,9 @@ class SignupForm extends React.Component{
                     <input type="password" onChange={this.update("password")} value={this.state.password} />
                 </label>
                 <input type="submit" value="continue"/>
-            </form>            
+            </form> 
+            <p onClick={this.changeForm}>Login instead</p>      
+            </>     
         )
     }
 }

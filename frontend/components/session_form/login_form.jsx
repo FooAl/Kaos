@@ -5,11 +5,12 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: "",
+            email: this.props.email,
             password: "",
             formType: window.location.pathname,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeForm = this.changeForm.bind(this);
     }
 
     update(field) {
@@ -23,8 +24,23 @@ class LoginForm extends React.Component {
         this.props.logIn(this.state);
     }
 
+    // componentWillUnmount() {
+    //     debugger
+    //     this.props.setEmail(this.state.email);
+    // }
+
+    // componentDidMount(){
+    //     // debugger
+    // }
+
+    changeForm(){
+        this.props.setEmail(this.state.email);
+        this.props.setFormType("register");
+    }
+
     render() {
         return (
+            <>
             <form onSubmit={this.handleSubmit}>
                 <label>
                     <span>email</span>
@@ -36,6 +52,8 @@ class LoginForm extends React.Component {
                 </label>
                 <input type="submit" value="continue" />
             </form>
+            <p onClick={this.changeForm}>Register instead</p>
+            </>
         )
 
     }

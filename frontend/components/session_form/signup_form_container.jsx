@@ -22,4 +22,4 @@ const mDP = dispatch => {
     );
 };
 
-export default connect(mSP, mDP)(SignupForm);
+export default connect(null, mDP)(SignupForm);
