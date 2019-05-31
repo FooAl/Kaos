@@ -52,16 +52,16 @@ class LoginForm extends React.Component {
                     <p>We're so excited to see you again!</p>
                     <form className="formEntry" onSubmit={this.handleSubmit}>
                         <label className="userInput">
-                            <span>EMAIL</span>
+                            <span className="fieldType">EMAIL</span>
                             <input className="inputBox" type="text" onChange={this.update("email")} value={this.state.email} />
                         </label>
                         <label className="userInput">
-                            <span>PASSWORD</span>
+                            <span className="fieldType">PASSWORD</span>
                             <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                         </label>
-                        <input type="submit" value="continue" />
+                        <input type="submit" value="Login" />
                     </form>
-                    <p>Need an account? <span onClick={this.changeForm}>Register</span></p>
+                    <p>Need an account? <span className="formTransition" onClick={this.changeForm}>Register</span></p>
                 </section>
             </section>
         )

@@ -63,9 +63,9 @@ class SignupForm extends React.Component{
                         <span className="fieldType">PASSWORD</span>
                         <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                     </label>
-                    <input type="submit" value="continue"/>
+                    <input type="submit" value="Continue"/>
                 </form> 
-                <span onClick={this.changeForm}>Already have an account?</span>      
+                <p><span className="formTransition" onClick={this.changeForm}>Already have an account?</span> </p>     
                 </section>
             </section>     
         )

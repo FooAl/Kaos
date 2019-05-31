@@ -111,11 +111,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2C2F33;
+    background-color: #36393f;
     border-radius: 5px;
     padding: 10px;
     height: 100%;
-    box-shadow: 0px 0px 3px black;
+    box-shadow: 0px 0px 2px black;
 }
 
 .formForm h1{
@@ -134,41 +134,80 @@
 .formEntry{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 400px;
+    translate: -20px 0px;
+    margin: 15px 0px 0px 0px;
 }
 
 .userInput{
     display: flex;
     flex-direction: column;
-    margin: 5px;
+    margin: 5px 0px;
     width: 100%;
 }
 
-@keyframes dropIn{
-    0% {
-        opacity: 0;
-        transform: translate(0px, -40px);
-    }
-    80%{
-        transform: translate(0px, 5px);
-    }
-    100%{
-        opacity: 1;
-        
-    }
-}
+
 
 input[type="text"], input[type="password"]{
     font-size: 15px;
     color: white;
-    background-color: #23272A;
-    padding: 3px;
+    background-color: #313339;
+    padding: 5px 10px;
     height: 25px;
-    border: 1px solid black;
+    border: 1px solid #212327;
     border-radius: 3px;
-    width: 400px;
+    width: 380px;
     
     margin: 10px 0px;
+}
+
+input:focus{
+    transition: .12s;
+    outline: none;
+    // box-shadow: 0 0 0 1px #7289DA;
+    border: 1px solid #7289DA;
+    // outline-style: solid;
+    // outline-width: thin;
+    // outline-color: #7289DA;
+    // : 1px solid #7289DA;
+}
+
+.fieldType{
+    font-size: 12px;
+    font-weight: 700;
+    color:#b9bbbe;
+}
+
+input[type="submit"]{
+    background-color: #7289DA;
+    height: 45px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    transition: .25s;
+
+}
+
+input[type="submit"]:hover{
+    background-color: #677bc4;
+    transition: .25s;
+}
+
+.formForm p{
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.formForm p .formTransition{
+    font-weight: 700;
+    color: #677bc4;
+    cursor: pointer;
+}
+
+.formForm p .formTransition:hover{
+    text-decoration: underline;
 }
 
 @keyframes formIn{
@@ -178,6 +217,20 @@ input[type="text"], input[type="password"]{
     }
     80%{
         transform: translate(-2px, 5px);
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+@keyframes dropIn{
+    0% {
+        opacity: 0;
+        transform: translate(0px, -40px);
+    }
+    80%{
+        transform: translate(0px, 5px);
     }
     100%{
         opacity: 1;
