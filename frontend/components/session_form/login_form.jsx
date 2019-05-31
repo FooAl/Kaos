@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
 
     changeForm(){
         document.getElementsByClassName("loginPageBody")[0].classList.add("fadeOut");
-        setTimeout(() => {this.changeSet();}, 300);
+        setTimeout(() => {this.changeSet();}, 500);
     }
 
     changeSet(){

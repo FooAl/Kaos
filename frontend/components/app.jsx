@@ -7,14 +7,16 @@ import MainPage from "./mainpage/mainpage";
 // import SignupForm from "./session_form/signup_form_container";
 // import LoginForm from "./session_form/login_form_container";
 import SessionForm from "./session_form/session_form_container";
+import Temp from "./temp/temp_container";
+import {AuthRoute, ProtectedRoute} from "../util/route_util";
 
 const App = () => {
     return (
         <div className="mainView">
             <Switch>
-                <Route path="/register" component={SessionForm}/>
-                <Route path="/login" component={SessionForm}/>
-                
+                <AuthRoute path="/register" component={SessionForm}/>
+                <AuthRoute path="/login" component={SessionForm}/>
+                <ProtectedRoute path="/me" component={Temp}/>
                 {/* logged in */}
                 <Route exact path="/" component={MainPage}/>
             </Switch>
