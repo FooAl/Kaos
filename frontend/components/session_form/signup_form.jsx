@@ -11,6 +11,7 @@ class SignupForm extends React.Component{
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
+        this.changeSet = this.changeSet.bind(this);
         
     }
 
@@ -35,6 +36,11 @@ class SignupForm extends React.Component{
     // }
     
     changeForm() {
+        document.getElementsByClassName("signupPageBody")[0].classList.add("fadeOut");
+        setTimeout(() => { this.changeSet(); }, 300);
+    }
+
+    changeSet() {
         this.props.setEmail(this.state.email);
         this.props.setFormType("login");
     }

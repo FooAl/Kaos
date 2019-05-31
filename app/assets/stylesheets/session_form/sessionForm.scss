@@ -14,8 +14,15 @@
 
 .formPageHeader{
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 55px;
+    left: 55px;
+    opacity: 0;
+    animation-name: dropIn;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: .25s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
 }
 
 .top{
@@ -23,20 +30,15 @@
     animation-name: fadeIn;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
-    animation-duration: 1s;
+    animation-duration: .25s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
-    height: 115%;
+    height: 120%;
     position: absolute;
     left: 0px;
     bottom: 0px;
 
 }
-
-// .Layer_1{
-//     fill: white;
-// }
-
 
 .under{
     animation-name: fadeOut;
@@ -45,11 +47,48 @@
     animation-duration: 1s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
-
+    width: 100%;
+    left: 0px;
     position: absolute;
     // background-position: center;
     // background-repeat: repeat;
     // background-size: 50%;
+}
+
+
+@keyframes dropIn{
+    0% {
+        opacity: 0;
+        transform: translate(0px, -40px);
+    }
+    80%{
+        transform: translate(0px, 5px);
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+@keyframes formIn{
+    0% {
+        opacity: 0;
+        transform: translate(10px, -40px);
+    }
+    80%{
+        transform: translate(-2px, 5px);
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+@keyframes formOut{
+    100%{
+        opacity: 0;
+        transform: translate(10px, -40px);
+    }
 }
 
 @keyframes fadeIn{
@@ -97,6 +136,14 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+
+    opacity: 0;
+    animation-name: formIn;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: .25s;
+    animation-delay: .25s;
+    animation-fill-mode: forwards;
 }
 
 .loginPageBody{
@@ -109,6 +156,22 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+
+    opacity: 0;
+    animation-name: formIn;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: .25s;
+    animation-delay: .25s;
+    animation-fill-mode: forwards;
+}
+
+.fadeOut{
+    opacity: 1;
+    animation-name: formOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-duration: .1s;
 }
 
 .formForm{
