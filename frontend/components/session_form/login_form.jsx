@@ -22,17 +22,32 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.logIn(this.state);
+        let has_error = false;
+        const fields = document.getElementsByClassName("userInput");
+        for(let i = 0; i < fields.length; i++)
+        {   debugger
+            if (fields[i].children[1].value === ""){
+                has_error = true;
+                fields[i].children[1].classList.add("inputError");
+                fields[i].children[0].classList.add("textError");
+                fields[i].children[0].children[1].innerHTML = " - This field is required";
+            } else if (fields[0].children[0].children[0].innerText === "EMAIL" 
+                && (fields[i].children[1].value.length < 2
+                    || fields[i].children[1].value.length > 32)){
+                has_error = true;
+                fields[i].children[1].classList.add("inputError");
+                fields[i].children[0].classList.add("textError");
+                fields[i].children[0].children[1].innerHTML = " - Must be between 2 and 32 in length";
+            }else{
+                fields[i].children[1].classList.remove("inputError");
+                fields[i].children[0].classList.remove("textError");
+                fields[i].children[0].children[1].innerHTML = "";
+            }
+        }
+        if (has_error === false){
+            this.props.logIn(this.state);
+        }
     }
-
-    // componentWillUnmount() {
-    //     debugger
-    //     this.props.setEmail(this.state.email);
-    // }
-
-    // componentDidMount(){
-    //     // debugger
-    // }
 
     changeForm(){
         document.getElementsByClassName("loginPageBody")[0].classList.add("fadeOut");
@@ -52,11 +67,13 @@ class LoginForm extends React.Component {
                     <p>We're so excited to see you again!</p>
                     <form className="formEntry" onSubmit={this.handleSubmit}>
                         <label className="userInput">
-                            <span className="fieldType">EMAIL</span>
+                            <span className="fieldType" name="email">
+                            <span>EMAIL</span>
+                            <span className="errorMessage"></span></span>
                             <input className="inputBox" type="text" onChange={this.update("email")} value={this.state.email} />
                         </label>
                         <label className="userInput">
-                            <span className="fieldType">PASSWORD</span>
+                            <span className="fieldType" name="password"><span>PASSWORD</span><span className="errorMessage"></span></span>
                             <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                         </label>
                         <input type="submit" value="Login" />

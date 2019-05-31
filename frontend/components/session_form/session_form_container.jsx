@@ -7,8 +7,7 @@ import {Link} from "react-router-dom";
 // const mSP = (state, ownProps) => {
 //     return(
 //         {
-//             formType: 'Create an Account',
-            
+//             formType: 'Create an Account',            
 //         }
 //     );
 // };

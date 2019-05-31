@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,,300i,400,700&display=swap');
 
 .background {
     height: 100%;
@@ -168,12 +168,7 @@ input[type="text"], input[type="password"]{
 input:focus{
     transition: .12s;
     outline: none;
-    // box-shadow: 0 0 0 1px #7289DA;
     border: 1px solid #7289DA;
-    // outline-style: solid;
-    // outline-width: thin;
-    // outline-color: #7289DA;
-    // : 1px solid #7289DA;
 }
 
 .fieldType{
@@ -210,6 +205,19 @@ input[type="submit"]:hover{
 
 .formForm p .formTransition:hover{
     text-decoration: underline;
+}
+
+.inputError{
+    border: 1px solid #f04747;
+}
+
+.textError{
+    color: #f04747;
+}
+
+.errorMessage{
+    font-style: italic;
+    font-size: 13px;
 }
 
 @keyframes formIn{

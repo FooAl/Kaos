@@ -26,14 +26,6 @@ class SignupForm extends React.Component{
         this.props.signUp(this.state);
     }
 
-    // componentWillUnmount(){
-    //     debugger
-    //     this.props.setEmail(this.state.email);
-    // }
-
-    // componentDidMount() {
-    //     debugger
-    // }
     
     changeForm() {
         document.getElementsByClassName("signupPageBody")[0].classList.add("fadeOut");
@@ -52,11 +44,11 @@ class SignupForm extends React.Component{
                 <h1>Create an account</h1>
                     <form className="formEntry" onSubmit={this.handleSubmit}>
                     <label className="userInput">
-                        <span className="fieldType">EMAIL</span>
-                        <input className="inputBox" type="text" onChange={this.update("email")} value={this.state.email}/>
+                            <span className="fieldType" name="text">EMAIL</span>
+                        <input className="inputBox" name="input" type="text" onChange={this.update("email")} value={this.state.email}/>
                     </label>
                         <label className="userInput">
-                        <span className="fieldType">USERNAME</span>
+                        <span className="fieldType">USERNAME </span>
                         <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
                     </label>
                         <label className="userInput">
