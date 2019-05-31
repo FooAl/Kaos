@@ -9,8 +9,13 @@
 //   height: 100%; 
 
 //   /* Center and scale the image nicely */
-
     position: relative;
+}
+
+.formPageHeader{
+    position: absolute;
+    top: 40px;
+    left: 40px;
 }
 
 .top{
@@ -21,9 +26,16 @@
     animation-duration: 1s;
     animation-delay: 1s;
     animation-fill-mode: forwards;
+    height: 115%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
 
 }
 
+// .Layer_1{
+//     fill: white;
+// }
 
 
 .under{
@@ -35,9 +47,9 @@
     animation-fill-mode: forwards;
 
     position: absolute;
-    background-position: center;
-    background-repeat: repeat;
-    background-size: 50%;
+    // background-position: center;
+    // background-repeat: repeat;
+    // background-size: 50%;
 }
 
 @keyframes fadeIn{
