@@ -50,18 +50,18 @@ class SignupForm extends React.Component{
             <section className="signupPageBody">
                 <section className="formForm">
                 <h1>Create an account</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <span>email</span>
-                        <input type="text" onChange={this.update("email")} value={this.state.email}/>
+                    <form className="formEntry" onSubmit={this.handleSubmit}>
+                    <label className="userInput">
+                        <span className="fieldType">EMAIL</span>
+                        <input className="inputBox" type="text" onChange={this.update("email")} value={this.state.email}/>
                     </label>
-                    <label>
-                        <span>username</span>
-                        <input type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
+                        <label className="userInput">
+                        <span className="fieldType">USERNAME</span>
+                        <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
                     </label>
-                    <label>
-                        <span>password</span>
-                        <input type="password" onChange={this.update("password")} value={this.state.password} />
+                        <label className="userInput">
+                        <span className="fieldType">PASSWORD</span>
+                        <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                     </label>
                     <input type="submit" value="continue"/>
                 </form> 
