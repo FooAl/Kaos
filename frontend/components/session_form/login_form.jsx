@@ -20,30 +20,27 @@ class LoginForm extends React.Component {
         };
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    emptyInputCheck(){
         let has_error = false;
         const fields = document.getElementsByClassName("userInput");
-        for(let i = 0; i < fields.length; i++)
-        {   debugger
-            if (fields[i].children[1].value === ""){
+        for (let i = 0; i < fields.length; i++) {    
+            if (fields[i].children[1].value === "") {  
                 has_error = true;
                 fields[i].children[1].classList.add("inputError");
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - This field is required";
-            } else if (fields[0].children[0].children[0].innerText === "EMAIL" 
-                && (fields[i].children[1].value.length < 2
-                    || fields[i].children[1].value.length > 32)){
-                has_error = true;
-                fields[i].children[1].classList.add("inputError");
-                fields[i].children[0].classList.add("textError");
-                fields[i].children[0].children[1].innerHTML = " - Must be between 2 and 32 in length";
-            }else{
+            } else {
                 fields[i].children[1].classList.remove("inputError");
                 fields[i].children[0].classList.remove("textError");
                 fields[i].children[0].children[1].innerHTML = "";
             }
         }
+        return has_error;
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        let has_error = this.emptyInputCheck();
         if (has_error === false){
             this.props.logIn(this.state);
         }
