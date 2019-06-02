@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
             email: "",
             formType: window.location.hash.slice(2),
             form: null,
+            errors: [],
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.setEmail = ((newEmail) => this.setState({email: newEmail})).bind(this);

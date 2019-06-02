@@ -21,6 +21,30 @@ class SignupForm extends React.Component{
         };
     }
 
+    emailChecker(){
+        let has_error = false;
+        const emailArray = this.state.email.split("@");
+        const formatError1 = document.getElementsByClassName("formatError1")[0];
+        const formatError2 = document.getElementsByClassName("formatError2")[0];
+        const triangle = document.getElementsByClassName("triangle")[0];
+        triangle.classList.remove("hidden");
+        if(emailArray.length === 1 && emailArray[0] !== ""){
+            formatError2.classList.remove("hidden");
+            formatError1.classList.add("hidden");
+            triangle.classList.add("hidden");
+            has_error = true;
+        }else if(emailArray.length === 3){
+            formatError1.classList.remove("hidden");
+            formatError2.classList.add("hidden");
+            triangle.classList.add("hidden");
+            has_error = true;
+        }else{
+            formatError1.classList.remove("hidden");
+            formatError2.classList.remove("hidden");
+        }
+        return has_error;
+    }
+
     emptyInputCheck() {
         let has_error = false;
         const fields = document.getElementsByClassName("userInput");
@@ -31,18 +55,24 @@ class SignupForm extends React.Component{
                 fields[i].children[1].classList.add("inputError");
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - This field is required";
-            } else if (fields[i].children[0].children[0].innerText === "PASSWORD" &&
-                fields[i].children[1].value.length < 6 || fields[i].children[1].value.length > 128) {
+            } else if (fields[i].children[0].children[0].innerText === "EMAIL" &&
+                this.state.email.split("@")[1].includes(".") === false){
                 has_error = true;
                 fields[i].children[1].classList.add("inputError");
                 fields[i].children[0].classList.add("textError");
-                fields[i].children[0].children[1].innerHTML = " - Must be between 2 and 32 in length";
+                fields[i].children[0].children[1].innerHTML = " - Not a well formed email address";
             } else if (fields[i].children[0].children[0].innerText === "USERNAME" &&
-                fields[i].children[1].value.length < 2 || fields[i].children[1].value.length > 32) {
+                this.state.discord_username.length < 2 || this.state.discord_username.length > 32) {
                 has_error = true;
                 fields[i].children[1].classList.add("inputError");
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - Must be between 2 and 32 in length";
+            } else if (fields[i].children[0].children[0].innerText === "PASSWORD" &&
+                this.state.password.length < 6 || this.state.password.length > 128) {
+                has_error = true;
+                fields[i].children[1].classList.add("inputError");
+                fields[i].children[0].classList.add("textError");
+                fields[i].children[0].children[1].innerHTML = " - Must be between 6 and 128 in length";
             } else {
                 fields[i].children[1].classList.remove("inputError");
                 fields[i].children[0].classList.remove("textError");
@@ -54,9 +84,11 @@ class SignupForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        let has_error = this.emptyInputCheck();
-        if (has_error === false) {
-            this.props.logIn(this.state);
+        if(this.emailChecker() === false){
+            const inputError = this.emptyInputCheck();
+            if (inputError === false) {
+                this.props.signUp(this.state);
+            }
         }
     }
 
@@ -72,6 +104,7 @@ class SignupForm extends React.Component{
     }
 
     render(){
+        let email = this.state.email;
         return (
             <section className="signupPageBody">
                 <section className="formForm">
@@ -83,6 +116,12 @@ class SignupForm extends React.Component{
                             <span className="errorMessage"></span>
                         </span>
                         <input className="inputBox" name="input" type="text" onChange={this.update("email")} value={this.state.email}/>
+                        <span className="formatError">
+                                <div className="triangle"></div>
+                                <span className="formatError1">Please include an '@' in the email address. {email} is missing an '@'</span>
+                                <span className="formatError2">A part following '@' should not contain the symbol '@'.</span>
+                        </span>
+                        
                     </label>
                         <label className="userInput">
                         <span className="fieldType">

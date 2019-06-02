@@ -65,12 +65,16 @@ class LoginForm extends React.Component {
                     <form className="formEntry" onSubmit={this.handleSubmit}>
                         <label className="userInput">
                             <span className="fieldType" name="email">
-                            <span>EMAIL</span>
-                            <span className="errorMessage"></span></span>
+                                <span>EMAIL</span>
+                                <span className="errorMessage"></span>
+                            </span>
                             <input className="inputBox" type="text" onChange={this.update("email")} value={this.state.email} />
                         </label>
                         <label className="userInput">
-                            <span className="fieldType" name="password"><span>PASSWORD</span><span className="errorMessage"></span></span>
+                            <span className="fieldType" name="password">
+                                <span>PASSWORD</span>
+                                <span className="errorMessage"></span>
+                            </span>
                             <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                         </label>
                         <input type="submit" value="Login" />
