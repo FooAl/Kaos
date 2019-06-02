@@ -22,3 +22,22 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+errors:
+notes:
+
+Please include an '@' in the email address. '___' is missing an @
+
+A part following '@' should not contain the symbol '@'.
+
+Not a well formed email address
+    -missing a . after the @
+
+Login - 
+Email does not exist.
+
+Password does not match.
+
+SignUp -
+Email is already registered

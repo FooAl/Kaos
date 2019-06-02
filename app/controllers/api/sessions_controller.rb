@@ -8,8 +8,11 @@ class Api::SessionsController < ApplicationController
             login!(@user)
             render "api/users/show"
         else
-            
-            render json: { error: ['invalid inputs']}, status: 401
+            if User.find_by(email: params[:user][:email])
+                render json: 'Password does not match', status: 401
+            else
+                render json: 'Email does not exist', status: 401
+            end
         end
     end
 

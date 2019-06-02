@@ -12,7 +12,7 @@ class SignupForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
         this.changeSet = this.changeSet.bind(this);
-        
+        this.clearErrors = this.clearErrors.bind(this);        
     }
 
     update(field){
@@ -27,22 +27,37 @@ class SignupForm extends React.Component{
         const formatError1 = document.getElementsByClassName("formatError1")[0];
         const formatError2 = document.getElementsByClassName("formatError2")[0];
         const triangle = document.getElementsByClassName("triangle")[0];
-        triangle.classList.remove("hidden");
         if(emailArray.length === 1 && emailArray[0] !== ""){
             formatError2.classList.remove("hidden");
+            triangle.classList.remove("hidden");
             formatError1.classList.add("hidden");
             triangle.classList.add("hidden");
             has_error = true;
         }else if(emailArray.length === 3){
             formatError1.classList.remove("hidden");
+            triangle.classList.remove("hidden");
             formatError2.classList.add("hidden");
             triangle.classList.add("hidden");
             has_error = true;
         }else{
             formatError1.classList.remove("hidden");
             formatError2.classList.remove("hidden");
+            triangle.classList.remove("hidden");
         }
         return has_error;
+    }
+
+    renderErrors() {
+        const fields = document.getElementsByClassName("userInput");
+        if (this.props.errors.errors.length !== 0) {
+            fields[0].children[1].required = true;
+            fields[0].children[0].classList.add("textError");
+            fields[0].children[0].children[1].innerHTML = " - Email is already registered"
+        }
+    }
+
+    clearErrors(){
+        this.props.emptyErrors();
     }
 
     emptyInputCheck() {
@@ -52,29 +67,29 @@ class SignupForm extends React.Component{
 
             if (fields[i].children[1].value === "") {
                 has_error = true;
-                fields[i].children[1].classList.add("inputError");
+                fields[i].children[1].required = true;
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - This field is required";
             } else if (fields[i].children[0].children[0].innerText === "EMAIL" &&
                 this.state.email.split("@")[1].includes(".") === false){
                 has_error = true;
-                fields[i].children[1].classList.add("inputError");
+                fields[i].children[1].required = true;
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - Not a well formed email address";
             } else if (fields[i].children[0].children[0].innerText === "USERNAME" &&
                 this.state.discord_username.length < 2 || this.state.discord_username.length > 32) {
                 has_error = true;
-                fields[i].children[1].classList.add("inputError");
+                fields[i].children[1].required = true;
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - Must be between 2 and 32 in length";
             } else if (fields[i].children[0].children[0].innerText === "PASSWORD" &&
                 this.state.password.length < 6 || this.state.password.length > 128) {
                 has_error = true;
-                fields[i].children[1].classList.add("inputError");
+                fields[i].children[1].required = true;
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - Must be between 6 and 128 in length";
             } else {
-                fields[i].children[1].classList.remove("inputError");
+                fields[i].children[1].required = false;
                 fields[i].children[0].classList.remove("textError");
                 fields[i].children[0].children[1].innerHTML = "";
             }
@@ -84,6 +99,7 @@ class SignupForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
+        this.props.emptyErrors();
         if(this.emailChecker() === false){
             const inputError = this.emptyInputCheck();
             if (inputError === false) {
@@ -91,9 +107,9 @@ class SignupForm extends React.Component{
             }
         }
     }
-
     
     changeForm() {
+        this.props.emptyErrors();
         document.getElementsByClassName("signupPageBody")[0].classList.add("fadeOut");
         setTimeout(() => { this.changeSet(); }, 300);
     }
@@ -105,6 +121,8 @@ class SignupForm extends React.Component{
 
     render(){
         let email = this.state.email;
+        this.renderErrors();
+        debugger
         return (
             <section className="signupPageBody">
                 <section className="formForm">
@@ -128,7 +146,7 @@ class SignupForm extends React.Component{
                             <span>USERNAME</span>
                             <span className="errorMessage"></span>
                         </span>
-                        <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username} />
+                        <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username}/>
                     </label>
                         <label className="userInput">
                         <span className="fieldType">

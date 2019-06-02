@@ -3,6 +3,7 @@ import * as APIUtil from "../util/session_api_util";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const EMPTY_ERRORS = "EMPTY_ERRORS";
 
 export const signUp = user => dispatch => {
     return(
@@ -27,8 +28,6 @@ export const logOut = () => dispatch => {
     );
 };
 
-
-
 const receiveUser = user => {
     return({
         type: RECEIVE_USER,
@@ -48,3 +47,9 @@ const receiveErrors = errors => {
         errors
     });
 };
+
+export const emptyErrors = () => {
+    return ({
+        type: EMPTY_ERRORS
+    })
+}

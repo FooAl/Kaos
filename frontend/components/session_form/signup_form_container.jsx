@@ -1,14 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import SignupForm from "./signup_form";
-import {signUp, logOut} from "../../actions/session_actions";
-import {Link} from "react-router-dom";
+import {signUp, logOut, emptyErrors} from "../../actions/session_actions";
 
 const mSP = (state, ownProps) => {
     return(
         {
-            formType: 'Create an Account',
-            navLink: <Link to="/login">Already have an account?</Link>
+            errors: state.errors,
         }
     );
 };
@@ -18,8 +16,9 @@ const mDP = dispatch => {
         {
             signUp: user => dispatch(signUp(user)),
             logOut: () => dispatch(logOut()),
+            emptyErrors: () => dispatch(emptyErrors()),
         }
     );
 };
 
-export default connect(null, mDP)(SignupForm);
+export default connect(mSP, mDP)(SignupForm);

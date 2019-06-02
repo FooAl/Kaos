@@ -193,6 +193,14 @@ input[type="submit"]:hover{
     transition: .25s;
 }
 
+input[type="text"]:required{
+    border: 1px solid #f04747;
+}
+
+input[type="password"]:required{
+    border: 1px solid #f04747;
+}
+
 .formForm p{
     font-size: 15px;
 }

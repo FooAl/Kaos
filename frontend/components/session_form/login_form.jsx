@@ -12,6 +12,7 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
         this.changeSet = this.changeSet.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     update(field) {
@@ -20,17 +21,35 @@ class LoginForm extends React.Component {
         };
     }
 
+    renderErrors() {
+        const fields = document.getElementsByClassName("userInput");
+        debugger
+        if (this.props.errors.errors.responseText === "Email does not exist") {
+            fields[0].children[1].required = true;
+            fields[0].children[0].classList.add("textError");
+            fields[0].children[0].children[1].innerHTML = " - Email does not exist."
+        } else if (this.props.errors.errors.responseText === "Password does not match") {
+            fields[1].children[1].required = true;
+            fields[1].children[0].classList.add("textError");
+            fields[1].children[0].children[1].innerHTML = " - Password does not match."
+        } 
+    }
+
+    clearErrors() {
+        this.props.emptyErrors();
+    }
+
     emptyInputCheck(){
         let has_error = false;
         const fields = document.getElementsByClassName("userInput");
         for (let i = 0; i < fields.length; i++) {    
             if (fields[i].children[1].value === "") {  
                 has_error = true;
-                fields[i].children[1].classList.add("inputError");
+                fields[i].children[1].required = true;
                 fields[i].children[0].classList.add("textError");
                 fields[i].children[0].children[1].innerHTML = " - This field is required";
             } else {
-                fields[i].children[1].classList.remove("inputError");
+                fields[i].children[1].required = false;
                 fields[i].children[0].classList.remove("textError");
                 fields[i].children[0].children[1].innerHTML = "";
             }
@@ -40,6 +59,7 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.emptyErrors();
         let has_error = this.emptyInputCheck();
         if (has_error === false){
             this.props.logIn(this.state);
@@ -57,6 +77,7 @@ class LoginForm extends React.Component {
     }
 
     render() {
+        this.renderErrors();
         return (
             <section className="loginPageBody">
                 <section className="formForm">

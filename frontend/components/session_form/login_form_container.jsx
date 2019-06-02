@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import LoginForm from "./login_form";
-import { logIn, logOut} from "../../actions/session_actions";
-import { Link } from "react-router-dom";
+import { logIn, logOut, emptyErrors} from "../../actions/session_actions";
+
 
 const mSP = (state, ownProps) => {
     return (
         {
-            navLink: <Link to="/register">Register</Link>
+            errors: state.errors,
         }
     );
 };
@@ -17,8 +17,9 @@ const mDP = dispatch => {
         {
             logIn: user => dispatch(logIn(user)),
             logOut: () => dispatch(logOut()),
+            emptyErrors: () => dispatch(emptyErrors()),
         }
     );
 };
 
-export default connect(null, mDP)(LoginForm);
+export default connect(mSP, mDP)(LoginForm);
