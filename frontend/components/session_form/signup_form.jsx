@@ -122,7 +122,6 @@ class SignupForm extends React.Component{
     render(){
         let email = this.state.email;
         this.renderErrors();
-        debugger
         return (
             <section className="signupPageBody">
                 <section className="formForm">

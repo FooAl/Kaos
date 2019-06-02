@@ -6,12 +6,20 @@ class mainPage extends React.Component{
         super(props);
     } 
 
+    loginDemo(){
+        let demoUser = {
+            email: "Test@test.test",
+            password: "starwars",
+        }
+        this.props.logIn(demoUser);
+    }
+
     render(){
         return(
             <div className="mainpage">
                 <header className="mainpageHeader">
                     <section className="mainpageHeaderLeft">
-                        Logo
+                        <img className="logo" src={window.discordLogo} height="50px"/>
                     </section>
                     <section className="mainpageHeaderRight">
                         <Link to="/login" className="loginButton">Login</Link>
@@ -26,7 +34,8 @@ class mainPage extends React.Component{
                 </section>
 
                 <section className="mainpageDemo">
-                    <Link to="/" className="demoButton">Open Kaos in Browser</Link>
+                    <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>
+                    <Link to="/me" className="demoButton">Open Kaos in Browser</Link>
                 </section>
 
                 <section className="mainpageImages">

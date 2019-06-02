@@ -23,7 +23,6 @@ class LoginForm extends React.Component {
 
     renderErrors() {
         const fields = document.getElementsByClassName("userInput");
-        debugger
         if (this.props.errors.errors.responseText === "Email does not exist") {
             fields[0].children[1].required = true;
             fields[0].children[0].classList.add("textError");

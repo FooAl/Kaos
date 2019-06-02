@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import {Route, Redirect, Switch, Link, HashRouter} from "react-router-dom";
 
 //import containers
-import MainPage from "./mainpage/mainpage";
+import MainPage from "./mainpage/mainpage_container";
 // import SignupForm from "./session_form/signup_form_container";
 // import LoginForm from "./session_form/login_form_container";
 import SessionForm from "./session_form/session_form_container";
