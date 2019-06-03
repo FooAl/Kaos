@@ -18,6 +18,13 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
+    has_many :messages
+    
+    has_many :servers,
+        foreign_key: :server_admin_id,
+        class_name: :Server,
+
+
     attr_reader :password
 
     def self.find_by_credentials(email, password)
