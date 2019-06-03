@@ -43,6 +43,9 @@ class mainPage extends React.Component{
                     <img src={window.mainpageImage} />
                 </section>
 
+                <section className="spacer"/>
+                    
+
                 <footer className="mainpageFooter">
                     <section className="mainpageFooterLeft">
                         <span className="footerMain">Ready to try Kaos? It's free!</span>

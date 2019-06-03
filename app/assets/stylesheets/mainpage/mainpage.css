@@ -84,6 +84,7 @@
     display: flex;
     justify-content: space-between;
     border-top: 1px solid #303238;
+    margin: 0px 0px 50px 0px;
 }
 
 .signupButton{
@@ -146,4 +147,8 @@
     width: 60%;
     display: flex;
     justify-content: space-evenly;
+}
+
+.spacer{
+    height: 200px;
 }
