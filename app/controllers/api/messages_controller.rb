@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
-    def show
-        @messages = Message.find(:all, limit: 50)
-        render :show
+    def index
+        @messages = Message.find(:all)
+        render :index
     end
 end
