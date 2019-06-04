@@ -98,8 +98,9 @@ class LoginForm extends React.Component {
                             <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
                         </label>
                         <input type="submit" value="Login" />
+                        <p className="switchLink">Need an account? <span className="formTransition" onClick={this.changeForm}>Register</span></p>
                     </form>
-                    <p>Need an account? <span className="formTransition" onClick={this.changeForm}>Register</span></p>
+                    
                 </section>
             </section>
         )

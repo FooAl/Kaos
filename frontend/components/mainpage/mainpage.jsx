@@ -16,6 +16,18 @@ class mainPage extends React.Component{
     }
 
     render(){
+        let loginButton = "";
+        let signupButton = "";
+        let demoButton = "";
+        if(this.props.session === null){
+            loginButton = <Link to="/me" className="loginButton">Login</Link>;
+            signupButton = <Link to="/register" className="signupButton">Sign Up Now</Link>;
+            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
+        }else{
+            loginButton = <Link to="/login" className="loginButton">Open</Link>;
+            signupButton = <Link to="/me" className="signupButton">Open Discord</Link>;
+            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
+        }
         return(
             <div className="mainpage">
                 <header className="mainpageHeader">
@@ -23,7 +35,7 @@ class mainPage extends React.Component{
                         <img className="logo" src={window.discordLogo} height="50px"/>
                     </section>
                     <section className="mainpageHeaderRight">
-                        <Link to="/login" className="loginButton">Login</Link>
+                        {loginButton}
                     </section>
                 </header>
 
@@ -35,7 +47,7 @@ class mainPage extends React.Component{
                 </section>
 
                 <section className="mainpageDemo">
-                    <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>
+                    {demoButton}
                     <Link to="/me" className="demoButton">Open Kaos in Browser</Link>
                 </section>
 
@@ -51,9 +63,8 @@ class mainPage extends React.Component{
                         <span className="footerMain">Ready to try Kaos? It's free!</span>
                         <span className="footerSub">Join over 0 users today</span>
                     </section>
-
                     <section className="mainpageFooterRight">
-                        <Link to="/register" className="signupButton">Sign Up Now</Link>
+                        {signupButton}
                     </section>
                 </footer>
             </div>

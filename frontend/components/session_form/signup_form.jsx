@@ -127,36 +127,37 @@ class SignupForm extends React.Component{
                 <section className="formForm">
                 <h1>Create an account</h1>
                     <form className="formEntry" onSubmit={this.handleSubmit}>
-                    <label className="userInput">
-                        <span className="fieldType" name="text">
-                            <span>EMAIL</span>
-                            <span className="errorMessage"></span>
-                        </span>
-                        <input className="inputBox" name="input" type="text" onChange={this.update("email")} value={this.state.email}/>
-                        <span className="formatError">
+                        <label className="userInput">
+                            <span className="fieldType" name="text">
+                                <span>EMAIL</span>
+                                <span className="errorMessage"></span>
+                            </span>
+                            <input className="inputBox" name="input" type="text" onChange={this.update("email")} value={this.state.email}/>
+                            <span className="formatError">
                                 <div className="triangle"></div>
                                 <span className="formatError1">Please include an '@' in the email address. {email} is missing an '@'</span>
                                 <span className="formatError2">A part following '@' should not contain the symbol '@'.</span>
-                        </span>
-                        
-                    </label>
+                            </span>
+                        </label>
+
                         <label className="userInput">
-                        <span className="fieldType">
-                            <span>USERNAME</span>
-                            <span className="errorMessage"></span>
-                        </span>
-                        <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username}/>
-                    </label>
+                            <span className="fieldType">
+                                <span>USERNAME</span>
+                                <span className="errorMessage"></span>
+                            </span>
+                            <input className="inputBox" type="text" onChange={this.update("discord_username")} value={this.state.discord_username}/>
+                        </label>
+
                         <label className="userInput">
-                        <span className="fieldType">
-                            <span>PASSWORD</span>
-                            <span className="errorMessage"></span>
-                        </span>
-                        <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
-                    </label>
-                    <input type="submit" value="Continue"/>
-                </form> 
-                <p><span className="formTransition" onClick={this.changeForm}>Already have an account?</span> </p>     
+                            <span className="fieldType">
+                                <span>PASSWORD</span>
+                                <span className="errorMessage"></span>
+                            </span>
+                            <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
+                        </label>
+                        <input type="submit" value="Continue"/>
+                        <p className="switchLink"><span className="formTransition" onClick={this.changeForm}>Already have an account?</span> </p>
+                    </form>   
                 </section>
             </section>     
         )

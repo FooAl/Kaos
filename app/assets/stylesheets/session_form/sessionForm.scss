@@ -259,6 +259,12 @@ input[type="password"]:required{
     color: black;
 }
 
+.switchLink {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
 .hidden{
     animation-name: popIn;
     animation-timing-function: ease-in-out;
