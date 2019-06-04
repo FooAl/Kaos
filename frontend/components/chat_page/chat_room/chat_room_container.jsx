@@ -5,7 +5,8 @@ import {fetchMessages} from "../../../actions/message_actions";
 
 const mSP = state => {
     return ({
-        users: state.entities.users
+        users: state.entities.users,
+        messages: state.entities.messages,
     });
 };
 

@@ -4,7 +4,6 @@ import MessageForm from "./message_form_container";
 class ChatRoom extends React.Component{
     constructor(props){
         super(props);
-
         this.state = {
             messages: [],
             pastHistory: 50,
@@ -24,13 +23,14 @@ class ChatRoom extends React.Component{
                 speak: function(data){return this.perform("speak",data);}
             }
         );
-
         this.props.fetchMessages(1);
+        
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(){
         this.bottom.current.scrollIntoView();
     }
+
 
     convertTime(timeStamp){
         const created_at = new Date(timeStamp);
@@ -67,7 +67,9 @@ class ChatRoom extends React.Component{
     }
 
     render(){
-        const messageList = this.state.messages.map(message => {
+        let oldMessages = Object.values(this.state.messages);
+        let newMessages = Object.values(this.props.messages);
+        const messageList = newMessages.concat(oldMessages).map(message => {
             const time = this.convertTime(message.created_at);
             const day = this.convertDay(message.created_at);
             return (
@@ -77,8 +79,8 @@ class ChatRoom extends React.Component{
                             {day} at {time}
                         </span>
                     </section>
-                    <section className="messageContent">{message.content}</section>
-                    <div ref={this.bottom}/>
+                    <section className="messageContent" >{message.content}</section>
+                    <div ref={this.bottom} />
                 </li>
             );
         });

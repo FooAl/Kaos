@@ -1,3 +1,5 @@
-.messageList{
+.messageList ul{
     background-color: white;
+    overflow: scroll;
+    height: 90vh;
 }
