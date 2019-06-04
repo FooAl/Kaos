@@ -4,13 +4,13 @@ export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 
 export const fetchMessages = channelID => dispatch => {
     return(
-        APIUtil.fetchMessages(channelID).then(messages => dispatch(receiveMessages(messages)))
+        APIUtil.fetchMessages(channelID).then(payload => dispatch(receiveMessages(payload)))
     );
 };
 
-const receiveMessages = messages => {
+const receiveMessages = payload => {
     return({
         type: RECEIVE_MESSAGES,
-        messages
+        payload
     });
 }

@@ -24,7 +24,6 @@ class ChatRoom extends React.Component{
             }
         );
         this.props.fetchMessages(1);
-        
     }
 
     componentDidUpdate(){
@@ -69,18 +68,21 @@ class ChatRoom extends React.Component{
     render(){
         let oldMessages = Object.values(this.state.messages);
         let newMessages = Object.values(this.props.messages);
+        let {users} = this.props;
         const messageList = newMessages.concat(oldMessages).map(message => {
             const time = this.convertTime(message.created_at);
             const day = this.convertDay(message.created_at);
+            debugger
             return (
                 <li key={message.id} className="message">
                     <section className="messageAuthor">
-                        {this.props.users[message.user_id].discord_username} <span className="messageDate"> 
+                        {users[message.user_id].discord_username} <span className="messageDate"> 
                             {day} at {time}
                         </span>
                     </section>
                     <section className="messageContent" >{message.content}</section>
                     <div ref={this.bottom}/>
+                    <hr className="messageHR"/>
                 </li>
             );
         });
@@ -88,7 +90,10 @@ class ChatRoom extends React.Component{
         // const messageList = "This is a test message";
         return (
             <section className="messageList">
-                <ul>
+                <header className="messageHeader">
+                    <span>Channel_Name</span>
+                </header>
+                <ul className="messageContainer">
                     {messageList}
                 </ul>
                 <div ref={this.bottom} />

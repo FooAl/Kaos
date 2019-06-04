@@ -4,6 +4,7 @@ import ChatRoom from "./chat_room";
 import {fetchMessages} from "../../../actions/message_actions";
 
 const mSP = state => {
+    debugger
     return ({
         users: state.entities.users,
         messages: state.entities.messages,

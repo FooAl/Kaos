@@ -3,7 +3,7 @@ import React from "react";
 class ChannelList extends React.Component{
     render(){
         return(
-            <section className="ChannelList"></section>
+            <section className="channelList">Channel List</section>
         )
     }
 }
