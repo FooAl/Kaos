@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+
 .chatPage{
     display: flex;
     align-items: row;
@@ -18,6 +21,7 @@
 }
 
 .messageList {
+    font-family: 'Lato', sans-serif;
     height: 100vh;
     width: 100%;
     background-color: #36393f;

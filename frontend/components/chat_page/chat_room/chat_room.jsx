@@ -1,5 +1,7 @@
 import React from "react";
 import MessageForm from "./message_form_container";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 
 class ChatRoom extends React.Component{
     constructor(props){
@@ -72,31 +74,39 @@ class ChatRoom extends React.Component{
         const messageList = newMessages.concat(oldMessages).map(message => {
             const time = this.convertTime(message.created_at);
             const day = this.convertDay(message.created_at);
-            debugger
             return (
                 <li key={message.id} className="message">
-                    <section className="messageAuthor">
-                        {users[message.user_id].discord_username} <span className="messageDate"> 
-                            {day} at {time}
-                        </span>
+                    <hr className="messageHR" />
+                    <section className="messageBody">
+                        <img className="messageIcon" src={window.iconGreen}/>
+                        <section className="messageText">
+                            <section className="messageAuthor">
+                                {users[message.user_id].discord_username} <span className="messageDate"> 
+                                    {day} at {time}
+                                </span>
+                            </section>
+                            <section className="messageContent" >{message.content}</section>
+                        </section>
                     </section>
-                    <section className="messageContent" >{message.content}</section>
                     <div ref={this.bottom}/>
-                    <hr className="messageHR"/>
                 </li>
             );
         });
-
+        const hash = <FontAwesomeIcon icon={faHashtag} />
         // const messageList = "This is a test message";
         return (
             <section className="messageList">
                 <header className="messageHeader">
-                    <span>Channel_Name</span>
+                    <section className="messageHeaderLeft">
+                        <span className="hash">{hash}</span>
+                        <span className="channelName">channel_name</span>
+                    </section>
                 </header>
                 <ul className="messageContainer">
                     {messageList}
                 </ul>
                 <div ref={this.bottom} />
+                <hr className="bottomHR" />
                 <MessageForm/>
             </section>
         );
