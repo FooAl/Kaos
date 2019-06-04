@@ -41,3 +41,7 @@ Password does not match.
 
 SignUp -
 Email is already registered
+
+
+serverList width = 65px
+channelList, serverUsers width = 240px
