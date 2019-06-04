@@ -8,7 +8,7 @@ class ChatRoom extends React.Component{
             messages: [],
             pastHistory: 50,
         };
-        this.bottom = React.createRef();
+        // this.bottom = React.createRef();
     }
 
     componentDidMount(){
@@ -28,7 +28,7 @@ class ChatRoom extends React.Component{
     }
 
     componentDidUpdate(){
-        this.bottom.current.scrollIntoView();
+        // this.bottom.current.scrollIntoView();
     }
 
 
@@ -80,7 +80,7 @@ class ChatRoom extends React.Component{
                         </span>
                     </section>
                     <section className="messageContent" >{message.content}</section>
-                    <div ref={this.bottom} />
+                    <div/>
                 </li>
             );
         });
