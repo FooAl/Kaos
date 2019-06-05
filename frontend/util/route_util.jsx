@@ -8,7 +8,7 @@ const Auth = ({component: Component, path, loggedIn, exact}) => (
             <Component {...props} />
         ) :
         (
-            <Redirect to="/me" />
+            <Redirect to="/channels" />
         )
     )}/>
 );

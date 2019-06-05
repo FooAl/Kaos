@@ -25,7 +25,8 @@ class ChatRoom extends React.Component{
                 speak: function(data){return this.perform("speak",data);}
             }
         );
-        this.props.fetchMessages(1);
+        debugger
+        this.props.fetchMessages(this.props.channelID);
     }
 
     componentDidUpdate(){
