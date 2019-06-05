@@ -102,9 +102,7 @@ class ChatRoom extends React.Component{
         });
         const hash = <FontAwesomeIcon icon={faHashtag} />
         let channelName = "";
-        debugger
         if(this.props.channels[this.props.match.params.id] !== undefined){
-            debugger
             channelName = this.props.channels[this.props.match.params.id].channel_name;
         }
         // const messageList = "This is a test message";

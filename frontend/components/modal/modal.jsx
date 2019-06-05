@@ -21,17 +21,17 @@ function Modal ({modal, closeModal}){
     }
 
     return(
-        <div className="modal-background" onClick={closeModal}>
+        <>
+            <div className="modal-background" onClick={closeModal}/>
             <section className="modal-child" onClick={e => e.stopPropagation()}>
                 {component}
             </section>
-        </div>
+        </>
     )
 
 }
 
 const mSP = state => {
-    debugger
     return {
         modal: state.modal
     };

@@ -8,6 +8,7 @@ const channelsReducer = (state={}, action) => {
     Object.freeze(state);
     switch(action.type){
         case RECEIVE_CHANNEL:
+            debugger
             return merge({}, state, {[action.channel.id]: action.channel});
         case RECEIVE_CHANNELS:
             return merge({}, state, action.channels);
