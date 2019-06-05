@@ -1,4 +1,4 @@
-import {RECEIVE_MESSAGES} from "../actions/message_actions";
+import {RECEIVE_MESSAGES, CLEAR_MESSAGES} from "../actions/message_actions";
 import {merge} from "lodash";
 
 const messagesReducer = (state = {}, action) => {
@@ -6,6 +6,8 @@ const messagesReducer = (state = {}, action) => {
     switch(action.type){
         case RECEIVE_MESSAGES:
             return merge({}, state, action.payload.messages);
+        case CLEAR_MESSAGES:
+            return {};
         default:
             return state;
     }

@@ -5,7 +5,7 @@ class ChatChannel < ApplicationCable::Channel
 
     def speak(data)
         message = Message.create(content: data['message'], 
-                                    user_id: data['user_id'], channel_id: 1)
+                                    user_id: data['user_id'], channel_id: data['channel_id'])
                                     
         socket = {id: message.id, content: message.content, 
                     user_id: message.user_id, channel_id: message.channel_id,

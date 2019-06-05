@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router";
 
 class MessageForm extends React.Component{
     constructor (props){
@@ -17,7 +18,7 @@ class MessageForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         App.cable.subscriptions.subscriptions[0].speak({message: this.state.body, 
-                            user_id: this.props.current_user});
+                            user_id: this.props.current_user, channel_id: this.props.match.params.id});
         this.setState({body: ""});
     }
     
@@ -25,7 +26,7 @@ class MessageForm extends React.Component{
         return(
             <div>
                 <form className="messageInput" onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.body} onChange={this.update("body")} placeholder="Message #channel_name"/>                    
+                    <input type="text" value={this.state.body} onChange={this.update("body")} placeholder={`Message #${this.props.channelName}`}/>                    
                 </form>
             </div>
         )
@@ -33,4 +34,4 @@ class MessageForm extends React.Component{
 
 }
 
-export default MessageForm;
+export default withRouter(MessageForm);

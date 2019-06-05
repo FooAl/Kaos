@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route} from "react-router-dom";
 import ChatRoom from "../chat_page/chat_room/chat_room_container";
 import ServerList from "../server/server_list_container";
 import ServerUserList from "../server/server_user_list";
@@ -12,7 +12,7 @@ class Temp extends React.Component{
             <div className="chatPage">
                 <ServerList />
                 <ChannelList />
-                <ChatRoom />
+                <Route exact path="/channels/1/:id" component={ChatRoom} />
                 <ServerUserList />
             </div>
     )}

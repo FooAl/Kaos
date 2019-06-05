@@ -14,9 +14,7 @@ class ChannelIndex extends React.Component{
     }
 
     render(){
-        debugger
         let channels = Object.values(this.props.channels)
-        debugger
         const channelList = channels.map(channel => {
             return <li key={channel.id} className="channel">
                 <Link to={`/channels/1/${channel.id}`}>{channel.channel_name}</Link>

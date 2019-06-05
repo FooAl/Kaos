@@ -25,12 +25,19 @@ class ChatRoom extends React.Component{
                 speak: function(data){return this.perform("speak",data);}
             }
         );
-        debugger
-        this.props.fetchMessages(this.props.channelID);
+        this.props.fetchMessages(this.props.match.params.id);
     }
 
-    componentDidUpdate(){
-        this.bottom.current.scrollIntoView();
+    componentDidUpdate(prevProps){
+        if (prevProps.match.params.id !== this.props.match.params.id)
+        {
+            this.setState({messages: []});
+            this.props.clearMessages();
+            this.props.fetchMessages(this.props.match.params.id);
+        }
+        if(this.bottom.current !== null){
+            this.bottom.current.scrollIntoView();
+        }
     }
 
 
@@ -94,13 +101,19 @@ class ChatRoom extends React.Component{
             );
         });
         const hash = <FontAwesomeIcon icon={faHashtag} />
+        let channelName = "";
+        debugger
+        if(this.props.channels[this.props.match.params.id] !== undefined){
+            debugger
+            channelName = this.props.channels[this.props.match.params.id].channel_name;
+        }
         // const messageList = "This is a test message";
         return (
             <section className="messageList">
                 <header className="messageHeader">
                     <section className="messageHeaderLeft">
                         <span className="hash">{hash}</span>
-                        <span className="channelName">channel_name</span>
+                        <span className="channelName">{channelName}</span>
                     </section>
                 </header>
                 <ul className="messageContainer">
@@ -108,7 +121,7 @@ class ChatRoom extends React.Component{
                 </ul>
                 <div ref={this.bottom} />
                 <hr className="bottomHR" />
-                <MessageForm/>
+                <MessageForm channelName={channelName}/>
             </section>
         );
     }

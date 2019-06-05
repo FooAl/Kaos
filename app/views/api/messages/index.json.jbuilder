@@ -13,3 +13,9 @@ json.users do
         end
     end
 end
+
+json.channels do
+    json.set! @messages.first.channel_id do
+        json.partial! "api/channels/channel", channel: @messages.first.channel
+    end    
+end
