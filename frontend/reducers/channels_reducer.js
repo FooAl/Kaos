@@ -16,7 +16,6 @@ const channelsReducer = (state={}, action) => {
             delete oldState[action.channelID];
             return oldState;
         case RECEIVE_MESSAGES:
-            debugger
             return merge({}, state, action.payload.channel)
         default:
             return state;
