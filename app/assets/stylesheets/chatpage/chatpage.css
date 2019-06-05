@@ -7,17 +7,19 @@
 }
 .serverList{
     height: 100vh;
-    width: 90px;
+    width: 125px;
+    background-color: #202225;
 }
 
 .channelList{
     height: 100vh;
     width: 240px;
+    background-color: #303237;
 }
 
 .serverUserList{
     height: 100vh;
-    width: 240px;
+    width: 340px;
 }
 
 .messageList {

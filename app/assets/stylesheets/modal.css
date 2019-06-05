@@ -13,6 +13,7 @@
 
 .createChannelModal{
     font-family: "Lato", sans-serif;
+    width: 440px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,4 +22,61 @@
     transform: translate(-50%, -50%);
     background-color: #36393f;
     border-radius: 5px;
+    color: white;
+    /* padding: 20px; */
+}
+
+.createChannelModal input[type="text"]{
+    width: 380px;
+    transition: .25s;
+    margin-top: 10px;
+}
+
+.createChannelModal input[type="text"]:hover{
+    border: 1px solid black;
+    transition: .25s;
+}
+
+.createChannelModal p{
+    font-weight: 700;
+    margin: 20px;
+    font-size: 15px;
+}
+
+.createChannelInput span{
+    font-size: 12px;
+    font-weight: 700;
+    color: #b9bbbe;
+    transform: translateX(20px);
+}
+
+.createChannelFooter{
+    background-color: #2f3136;
+    height: 80px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.createChannelFooter input[type="submit"]{
+    font-size: 14px;
+    padding: 3px 15px;
+    height: 40px;
+}
+
+.createChannelFooter .closeCreate{
+    color: white;
+    font-size: 14px;
+    padding: 3px 15px;
+    height: 40px;
+    margin: 0px 10px;
+}
+
+.createChFormInput{
+    height: 100px;
+    padding: 20px;
 }

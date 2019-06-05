@@ -27,16 +27,17 @@ class createChannelModal extends React.Component{
     render (){
         return(
             <div className="createChannelModal">
-                <p>Create Text Channel</p>
+                <p>CREATE TEXT CHANNEL</p>
                 <form className="createChannelInput" onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.body} onChange={this.update("body")}/>
+                    <section className="createChFormInput">
+                        <span>CHANNEL NAME</span>
+                        <input type="text" value={this.state.body} onChange={this.update("body")} />
+                    </section>
                     <section className="createChannelFooter">
-                        <button type="button" className="closeCreate" onClick={this.props.closeModal}>Cancel</button>
+                        <span className="closeCreate" onClick={this.props.closeModal}>Cancel</span>
                         <input type="submit" className="createChannelButton" value="Create Channel" />
                     </section>
-                
-                </form>
-                
+                </form> 
             </div>
 
         )
@@ -50,10 +51,4 @@ const mDP = dispatch =>{
     }
 }
 
-// const connected = connect(null, mDP)(createChannelModal);
-// const routed = withRouter(createChannelModal)›
-
-
 export default withRouter(connect(null, mDP)(createChannelModal));
-
-// export default connect(null, mDP)(createChannelModal);
