@@ -1,0 +1,163 @@
+.channelColumn{
+    font-family: "Lato", "sans-serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width: 240px; */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.channelList{
+    /* width: 140px; */
+}
+
+.channelHeader{
+    border-bottom: 1px solid black;
+    height: 50px;
+    width: 100%;
+    box-shadow: 0px 0px 1px 0px black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    padding: 0px 10px;
+}
+
+.channelIndex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subChannelIndex{
+    height: 100%;
+}
+
+.subChannelFooter{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #2a2d30;
+    padding: 5px;
+}
+
+.userIcon{
+    border-radius: 50%;
+    height: 30px;
+    margin: 0px 10px;
+}
+
+.subChannelHeader{
+    display: flex;
+    color: #82868b;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px 10px 20px;
+}
+
+.subChannelHeader:hover{
+    color: white;
+}
+
+.subChannelHeader .subCreateButton{
+    color: #82868b;
+    font-size: 20px;
+}
+
+.subCreateButton:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.serverChannelList{
+    margin: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.serverChannelList a{
+    text-decoration: none;
+    cursor: default;
+}
+
+
+.channel{
+    list-style-type: none;
+    margin: 3px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    border-radius: 3px;
+    
+}
+
+.channel:hover{
+    background-color: #2a2d30;
+}
+
+.channel:hover .editChannel, 
+.channel:hover .deleteChannel{
+    color: #82868b;
+    opacity: 1;
+    transition: .25s;
+}
+
+.channel .editChannel:hover,
+.channel .deleteChannel:hover{
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.channelHash{
+    color: #72767d;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.channelName{
+    color: #888b90;
+    font-size: 16px;
+}
+
+
+.subChannelFooter{
+    color: white;
+    bottom: 0px;
+}
+
+.editChannel, .deleteChannel{
+    opacity: 0;
+}
+
+.currentChannel .channel{
+    background-color: #40444b;
+}
+
+.buttons{
+    display: flex;
+    width: 35px;
+    justify-content: space-between;
+}
+
+.currentChannel li section .channelName{
+    color: white;
+}
+
+.currentChannel .channel section .editChannel,
+.currentChannel .channel section .deleteChannel{
+    color: #82868b;
+    opacity: 1;
+}
+
+.currentChannel .channel section .editChannel:hover,
+.currentChannel .channel section .deleteChannel:hover{
+    color: white;
+
+}
+

@@ -28,6 +28,12 @@ export const deleteChannel = channelID => dispatch => {
     );
 };
 
+export const editChannel = channel => dispatch => {
+    return (
+        APIUtil.editChannel(channel).then(channel => dispatch(receiveChannel(channel)))
+    );
+}
+
 const receiveChannels = channels => {
     return({
         type: RECEIVE_CHANNELS,
@@ -36,6 +42,7 @@ const receiveChannels = channels => {
 };
 
 const receiveChannel = channel => {
+    debugger
     return({
         type: RECEIVE_CHANNEL,
         channel

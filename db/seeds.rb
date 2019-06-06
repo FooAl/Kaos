@@ -11,3 +11,5 @@ User.create(discord_username: "Test", email: "Test@test.test", password: "starwa
 Server.create(server_name: "Test_Server", server_admin_id: 1, public: true, invite_key: "test")
 
 Channel.create(channel_name: "Test_Channel", server_id: 1)
+
+UserServerLink.create(user_id: 1, server_id: 1)

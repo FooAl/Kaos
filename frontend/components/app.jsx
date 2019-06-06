@@ -9,14 +9,17 @@ import MainPage from "./mainpage/mainpage_container";
 import SessionForm from "./session_form/session_form_container";
 import Temp from "./temp/temp_container";
 import {AuthRoute, ProtectedRoute} from "../util/route_util";
+import Modal from "./modal/modal";
+
 
 const App = () => {
     return (
         <div className="mainView">
+            <Modal />
             <Switch>
                 <AuthRoute path="/register" component={SessionForm}/>
                 <AuthRoute path="/login" component={SessionForm}/>
-                <ProtectedRoute path="/me" component={Temp}/>
+                <ProtectedRoute path="/channels" component={Temp}/>
                 {/* logged in */}
                 <Route exact path="/" component={MainPage}/>
             </Switch>

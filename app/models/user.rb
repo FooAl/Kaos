@@ -19,8 +19,10 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :messages
+    has_many :user_server_links
+    has_many :servers, through: :user_server_links
 
-    has_many :servers,
+    has_many :owned_servers,
         foreign_key: :server_admin_id,
         class_name: :Server
 

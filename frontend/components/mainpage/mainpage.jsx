@@ -20,13 +20,13 @@ class mainPage extends React.Component{
         let signupButton = "";
         let demoButton = "";
         if(this.props.session === null){
-            loginButton = <Link to="/me" className="loginButton">Login</Link>;
+            loginButton = <Link to="/login" className="loginButton">Login</Link>;
             signupButton = <Link to="/register" className="signupButton">Sign Up Now</Link>;
-            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
+            demoButton = <Link to="/channels" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
         }else{
-            loginButton = <Link to="/login" className="loginButton">Open</Link>;
-            signupButton = <Link to="/me" className="signupButton">Open Discord</Link>;
-            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
+            loginButton = <Link to="/channels" className="loginButton">Open</Link>;
+            signupButton = <Link to="/channels" className="signupButton">Open Discord</Link>;
+            demoButton = <Link to="/channels" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
         }
         return(
             <div className="mainpage">
@@ -48,7 +48,7 @@ class mainPage extends React.Component{
 
                 <section className="mainpageDemo">
                     {demoButton}
-                    <Link to="/me" className="demoButton">Open Kaos in Browser</Link>
+                    <Link to="/channels" className="demoButton">Open Kaos in Browser</Link>
                 </section>
 
                 <section className="mainpageImages">

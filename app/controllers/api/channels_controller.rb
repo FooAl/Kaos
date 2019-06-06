@@ -1,11 +1,11 @@
 class Api::ChannelsController < ApplicationController
     def index
-        @channel = Channel.all
+        @channels = Channel.all
         render :index
     end
 
     def show
-        @channel = Channel.find(params[:channel][:id])
+        @channel = Channel.find(params[:id])
         render :show
     end
 
@@ -18,8 +18,18 @@ class Api::ChannelsController < ApplicationController
         end
     end
 
-    def delete
-        @channel = Channel.find(params[:channel][:id])
+    def edit
+        @channel = Channel.find(params[:id])
+        if @channel.update_attributes(channel_params)
+            render :show
+        else
+            render json: @channel.errors.full_messages, status: 422
+        end
+    end
+
+
+    def destroy
+        @channel = Channel.find(params[:id])
         @channel.destroy
     end
 
