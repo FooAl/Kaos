@@ -48,7 +48,7 @@ class mainPage extends React.Component{
 
                 <section className="mainpageDemo">
                     {demoButton}
-                    <Link to="/channels" className="demoButton">Open Kaos in Browser</Link>
+                    <Link to="/me" className="demoButton">Open Kaos in Browser</Link>
                 </section>
 
                 <section className="mainpageImages">
