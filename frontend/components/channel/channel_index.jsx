@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +13,8 @@ class ChannelIndex extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchChannels(1);
+        const serverID = this.props.history.location.pathname.split("/")[2];
+        this.props.fetchChannels(serverID);
     }
 
     render(){
@@ -50,4 +51,4 @@ class ChannelIndex extends React.Component{
     }
 }
 
-export default ChannelIndex;
+export default withRouter(ChannelIndex);

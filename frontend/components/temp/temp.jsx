@@ -13,7 +13,7 @@ class Temp extends React.Component{
                 <ServerList />
                 <Route path="/channels/:id" component={ChannelList} />
                 <Route exact path="/channels/:id/:id" component={ChatRoom} />
-                {/* <ServerUserList /> */}
+                <ServerUserList />
             </div>
     )}
 }
