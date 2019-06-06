@@ -7,7 +7,6 @@ class LoginForm extends React.Component {
         this.state = {
             email: this.props.email,
             password: "",
-            formType: window.location.pathname,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.changeForm = this.changeForm.bind(this);
@@ -100,7 +99,6 @@ class LoginForm extends React.Component {
                         <input type="submit" value="Login" />
                         <p className="switchLink">Need an account? <span className="formTransition" onClick={this.changeForm}>Register</span></p>
                     </form>
-                    
                 </section>
             </section>
         )

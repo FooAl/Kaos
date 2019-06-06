@@ -56,7 +56,7 @@ class SessionForm extends React.Component {
                 this.props.history.push("/register");
                 // this.setState({ form: <SignupForm /> });
             } else if (this.state.formType === "login") {
-                this.props.history.push("login");
+                this.props.history.push("/login");
                 // this.setState({ form: (<p>login form item</p>) });
             } else {
                 // this.setState({ form: (<p>error</p>) });

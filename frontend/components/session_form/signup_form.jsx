@@ -94,7 +94,7 @@ class SignupForm extends React.Component{
                 fields[i].children[0].children[1].innerHTML = "";
             }
         }
-        return has_error
+        return has_error;
     }
 
     handleSubmit(e){
