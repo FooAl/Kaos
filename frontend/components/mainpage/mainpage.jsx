@@ -22,11 +22,11 @@ class mainPage extends React.Component{
         if(this.props.session === null){
             loginButton = <Link to="/login" className="loginButton">Login</Link>;
             signupButton = <Link to="/register" className="signupButton">Sign Up Now</Link>;
-            demoButton = <Link to="/channels" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
+            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
         }else{
-            loginButton = <Link to="/channels" className="loginButton">Open</Link>;
-            signupButton = <Link to="/channels" className="signupButton">Open Discord</Link>;
-            demoButton = <Link to="/channels" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
+            loginButton = <Link to="/me" className="loginButton">Open</Link>;
+            signupButton = <Link to="/me" className="signupButton">Open Discord</Link>;
+            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
         }
         return(
             <div className="mainpage">

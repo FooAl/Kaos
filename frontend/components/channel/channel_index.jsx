@@ -18,7 +18,6 @@ class ChannelIndex extends React.Component{
     }
 
     componentDidUpdate(prevProps){
-        debugger
         if (prevProps.match.params.id !== this.props.match.params.id)
         {
             this.setState({channels: []});

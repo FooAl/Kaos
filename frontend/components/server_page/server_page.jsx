@@ -5,7 +5,7 @@ import ServerList from "../server/server_list_container";
 import ServerUserList from "../server/server_user_list";
 import ChannelList from "../channel/channel_list";
 
-class Temp extends React.Component{
+class ServerPage extends React.Component{
 
     render(){
         return (
@@ -18,4 +18,4 @@ class Temp extends React.Component{
     )}
 }
 
-export default Temp;
+export default ServerPage;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import TempForm from "./temp";
+import ServerPage from "./server_page";
 import { logOut } from "../../actions/session_actions";
 import { Link } from "react-router-dom";
 
@@ -12,4 +12,4 @@ const mDP = dispatch => {
     );
 };
 
-export default connect(null, mDP)(TempForm);
+export default connect(null, mDP)(ServerPage);

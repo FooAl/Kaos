@@ -28,7 +28,6 @@ class deleteChannelModal extends React.Component {
     }
 
     render() {
-        debugger
         const channelName = this.props.channels[this.props.history.location.pathname.split("/")[3]].channel_name;
         return (
             <div className="createChannelModal">
