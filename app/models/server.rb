@@ -15,6 +15,9 @@ class Server < ApplicationRecord
     validates :server_name, :server_admin_id, :invite_key, presence: true
 
     has_many :channels
+    has_many :user_server_links
+
+    has_many :users, through: :user_server_links
 
     belongs_to :server_admin,
         foreign_key: :server_admin_id,

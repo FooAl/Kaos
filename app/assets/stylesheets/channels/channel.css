@@ -5,6 +5,7 @@
     justify-content: space-between;
     /* width: 240px; */
     height: 100vh;
+    overflow: hidden;
 }
 
 .channelList{

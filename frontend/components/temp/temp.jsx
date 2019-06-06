@@ -11,9 +11,9 @@ class Temp extends React.Component{
         return (
             <div className="chatPage">
                 <ServerList />
-                <ChannelList />
-                <Route exact path="/channels/1/:id" component={ChatRoom} />
-                <ServerUserList />
+                <Route path="/channels/:id" component={ChannelList} />
+                <Route exact path="/channels/:id/:id" component={ChatRoom} />
+                {/* <ServerUserList /> */}
             </div>
     )}
 }
