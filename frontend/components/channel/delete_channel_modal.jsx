@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
-import { deleteChannel } from "../../actions/channel_actions";
+import { deleteChannel, clearChannels, fetchChannels } from "../../actions/channel_actions";
 
 class deleteChannelModal extends React.Component {
     constructor(props) {
@@ -18,9 +18,13 @@ class deleteChannelModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const channelID = this.props.history.location.pathname.split("/")[3];
+        const location = this.props.history.location.pathname.split("/");
+        const serverID = location[2];
+        const channelID = location[3];
         this.props.processForm(channelID);
         this.props.closeModal();
+        this.props.clearChannels();
+        this.props.fetchChannels(serverID);
     }
 
     render() {
@@ -52,6 +56,8 @@ const mDP = dispatch => {
     return {
         processForm: channelID => dispatch(deleteChannel(channelID)),
         closeModal: () => dispatch(closeModal()),
+        clearChannels: () => dispatch(clearChannels()),
+        fetchChannels: serverID => dispatch(fetchChannels(serverID)),
     }
 }
 

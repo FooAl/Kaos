@@ -131,7 +131,27 @@
 .subChannelFooter{
     color: white;
     bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.subChannelFooter a{
+    color: #82868b;
+    transition: .25s;
+    margin-right: 10px;
+}
+
+.subChannelFooter a:hover{
+    color: white;
+    transition: .25s;
+}
+
+.footerUser{
+    display: flex;
+    align-items: center;
+}
+
 
 .editChannel, .deleteChannel{
     opacity: 0;

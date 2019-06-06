@@ -23,7 +23,6 @@ class ServerList extends React.Component{
 
         return(
             <section className="serverList">
-                <Link to="/" onClick={() => this.props.logOut()}>Logout</Link>
                 {serverList}
             </section>
         )

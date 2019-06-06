@@ -17,8 +17,18 @@ class ChannelIndex extends React.Component{
         this.props.fetchChannels(serverID);
     }
 
+    componentDidUpdate(prevProps){
+        debugger
+        if (prevProps.match.params.id !== this.props.match.params.id)
+        {
+            this.setState({channels: []});
+            this.props.clearChannels();
+            this.props.fetchChannels(this.props.history.location.pathname.split("/")[2]);
+        }
+    }
+
     render(){
-        let channels = Object.values(this.props.channels)
+        let channels = Object.values(this.props.channels);
         const channelList = channels.map(channel => {
             return (
                 <NavLink to={`/channels/1/${channel.id}`} activeClassName="currentChannel" key={channel.id}>
@@ -35,7 +45,6 @@ class ChannelIndex extends React.Component{
             </NavLink>
             )
         })
-        debugger
         return(
             <section className="channelIndex">
                 <section className="subChannelIndex">

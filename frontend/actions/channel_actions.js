@@ -3,6 +3,7 @@ import * as APIUtil from "../util/channel_api_util";
 export const RECEIVE_CHANNELS = "RECEIVE_CHANNELS";
 export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
 export const DESTROY_CHANNEL = "DESTROY_CHANNEL";
+export const CLEAR_CHANNELS = "CLEAR_CHANNELS";
 
 export const fetchChannels = serverID => dispatch => {
     return(
@@ -53,5 +54,11 @@ const destroyChannel = channelID => {
     return({
         type: DESTROY_CHANNEL,
         channelID
+    });
+};
+
+export const clearChannels = () => {
+    return({
+        type: CLEAR_CHANNELS
     });
 };

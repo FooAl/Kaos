@@ -1,6 +1,7 @@
 import {DESTROY_CHANNEL, 
         RECEIVE_CHANNEL, 
-        RECEIVE_CHANNELS} from "../actions/channel_actions";
+        RECEIVE_CHANNELS,
+        CLEAR_CHANNELS} from "../actions/channel_actions";
 import {RECEIVE_MESSAGES} from "../actions/message_actions";
 import {merge} from "lodash";
 
@@ -15,8 +16,10 @@ const channelsReducer = (state={}, action) => {
             let oldState = merge({}, state);
             delete oldState[action.channelID];
             return oldState;
+        case CLEAR_CHANNELS:
+            return {};
         case RECEIVE_MESSAGES:
-            return merge({}, state, action.payload.channel)
+            return merge({}, state, action.payload.channel);
         default:
             return state;
     }
