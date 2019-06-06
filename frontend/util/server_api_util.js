@@ -16,7 +16,7 @@ export const fetchServer = serverID => {
 export const deleteServer = (serverID) => {
     return $.ajax({
         method: "DELETE",
-        url: `/api/channels/${serverID}`,
+        url: `/api/servers/${serverID}`,
     });
 };
 

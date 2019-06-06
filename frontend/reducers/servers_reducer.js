@@ -1,6 +1,7 @@
 import {DESTROY_SERVER,
         RECEIVE_SERVER,
-        RECEIVE_SERVERS} from "../actions/server_actions";
+        RECEIVE_SERVERS,
+        CLEAR_SERVERS} from "../actions/server_actions";
 import { merge } from "lodash";
 
 const serversReducer = (state = {}, action) => {
@@ -14,6 +15,8 @@ const serversReducer = (state = {}, action) => {
             let oldState = merge({}, state);
             delete oldState[action.serverID];
             return oldState;
+        case CLEAR_SERVERS:
+            return {};
         default:
             return state;
     }

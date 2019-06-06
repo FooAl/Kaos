@@ -1,10 +1,11 @@
 import React from "react";
 import ChannelIndex from "./channel_index_container";
 import {logOut} from "../../actions/session_actions";
+import {openModal} from "../../actions/modal_actions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 class ChannelList extends React.Component{
     render(){
@@ -16,7 +17,15 @@ class ChannelList extends React.Component{
         return(
             <div className="channelColumn">
                 <section className="channelList">
-                    <section className="channelHeader">{serverName}</section>
+                    <section className="channelHeader">
+                        {serverName}
+                        <section className="serverButtons">
+                            <div className="deleteServer" onClick={() => dispatch(this.props.openModal("deleteServer"))}>
+                                <FontAwesomeIcon icon={faTrash} />
+                            </div>
+                        </section>
+                    </section>
+
                     <ChannelIndex />
                 </section>
 
@@ -44,6 +53,7 @@ const mSP = state => {
 const mDP = dispatch => {
     return({
         logOut: () => dispatch(logOut()),
+        openModal: field => dispatch(openModal(field)),
     })
 }
 

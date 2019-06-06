@@ -95,7 +95,7 @@ class LoginForm extends React.Component {
                                 <span className="errorMessage"></span>
                             </span>
                             <input className="inputBox" type="password" onChange={this.update("password")} value={this.state.password} />
-                        </label>
+                        </label>        
                         <input type="submit" value="Login" />
                         <p className="switchLink">Need an account? <span className="formTransition" onClick={this.changeForm}>Register</span></p>
                     </form>

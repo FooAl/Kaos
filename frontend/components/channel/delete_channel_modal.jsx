@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import { deleteChannel, clearChannels, fetchChannels } from "../../actions/channel_actions";
 
@@ -25,6 +25,7 @@ class deleteChannelModal extends React.Component {
         this.props.closeModal();
         this.props.clearChannels();
         this.props.fetchChannels(serverID);
+        this.props.history.push(`/channels/${serverID}`);
     }
 
     render() {
@@ -33,7 +34,7 @@ class deleteChannelModal extends React.Component {
             <div className="createChannelModal">
                 <p>DELETE CHANNEL</p>
                 <form className="createChannelInput" onSubmit={this.handleSubmit}>
-                    <p className="deleteText">Are you sure you want to delete <span>#{channelName}</span>? This cannot be undone.</p>
+                    <p className="deleteText">Are you sure you want to delete this channel? This cannot be undone.</p>
                     <section className="createChannelFooter">
                         <span className="closeCreate" ><div onClick={this.props.closeModal}>No</div></span>
                         <input type="submit" className="createChannelButton" value="Yes" />

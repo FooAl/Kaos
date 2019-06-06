@@ -14,16 +14,18 @@ class ServerList extends React.Component{
 
     render(){
         let servers = Object.values(this.props.servers);
-        const serverList = servers.map(server => {
-            return(
-                <li key={server.id} className="server">
-                    <NavLink to={`/channels/${server.id}/`} activeClassName="currentServer">
-                        <img src={window.iconGreen} className="serverIcon"/>
-                    </NavLink>
-                </li>
-            )
-        })
-
+        let serverList = [];
+        if(servers[0] !== undefined){
+            serverList = servers.map(server => {
+                return(
+                    <li key={server.id} className="server">
+                        <NavLink to={`/channels/${server.id}/`} activeClassName="currentServer">
+                            <img src={window.iconGreen} className="serverIcon"/>
+                        </NavLink>
+                    </li>
+                )
+            })
+        }
         return(
             <section className="serverList">
                 <ul className="serverIndex">

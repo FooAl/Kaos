@@ -3,6 +3,7 @@ import * as APIUtil from "../util/server_api_util";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const DESTROY_SERVER = "DESTROY_SERVER";
+export const CLEAR_SERVERS = "CLEAR_SERVERS";
 
 export const fetchServers = sessionID => dispatch => {
     return (
@@ -52,5 +53,11 @@ const destroyServer = serverID => {
     return ({
         type: DESTROY_SERVER,
         serverID
+    });
+};
+
+export const clearServers = () => {
+    return({
+        type: CLEAR_SERVERS
     });
 };

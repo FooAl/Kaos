@@ -28,7 +28,8 @@ class Api::ServersController < ApplicationController
     end
 
     def destroy
-        @server = Channel.find(params[:id])
+        debugger
+        @server = Server.find(params[:id])
         @server.destroy
     end
 
