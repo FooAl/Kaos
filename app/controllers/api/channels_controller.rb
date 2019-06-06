@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
     def index
-        @channels = Channel.all
+        @channels = Channel.where(server_id: params[:server_id])
         render :index
     end
 

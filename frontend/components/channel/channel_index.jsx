@@ -29,9 +29,10 @@ class ChannelIndex extends React.Component{
 
     render(){
         let channels = Object.values(this.props.channels);
+        const serverID = this.props.history.location.pathname.split("/")[2];
         const channelList = channels.map(channel => {
             return (
-                <NavLink to={`/channels/1/${channel.id}`} activeClassName="currentChannel" key={channel.id}>
+                <NavLink to={`/channels/${serverID}/${channel.id}`} activeClassName="currentChannel" key={channel.id}>
                 <li className="channel">
                     <section>
                         <span className="channelHash"><FontAwesomeIcon icon={faHashtag} /></span>

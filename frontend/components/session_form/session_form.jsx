@@ -43,7 +43,6 @@ class SessionForm extends React.Component {
     }
 
     componentWillUnmount(){
-        // debugger
         // document.getElementById("base").classList.remove("formBG");
     }
 

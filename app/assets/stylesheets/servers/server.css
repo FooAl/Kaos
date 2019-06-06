@@ -1,0 +1,12 @@
+.serverIcon{
+    border-radius: 50%;
+    height: 50px;
+}
+
+.server{
+    list-style-type: none;
+}
+
+.serverIndex{
+    padding: 0px;
+}
