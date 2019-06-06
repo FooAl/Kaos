@@ -1,7 +1,6 @@
 class Api::UserServerLinksController < ApplicationController
 
     def create
-        debugger
         @link = UserServerLink.new(user_id: params[:link][:user_id], server_id: params[:link][:server_id])
         @link.save
     end

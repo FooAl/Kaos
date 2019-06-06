@@ -24,7 +24,7 @@
 
 .messageInput input[type="text"] {
     width: 95%;
-    margin: 10px;
+    margin: 0px 10px 10px 10px;
     height: 20px;
     padding: 10px;
     border: none;

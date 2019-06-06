@@ -33,7 +33,7 @@ class ChannelIndex extends React.Component{
             return (
                 <NavLink to={`/channels/${serverID}/${channel.id}`} activeClassName="currentChannel" key={channel.id}>
                 <li className="channel">
-                    <section>
+                    <section className="channelLeft">
                         <span className="channelHash"><FontAwesomeIcon icon={faHashtag} /></span>
                         <span className="channelName">{channel.channel_name}</span>
                     </section>
