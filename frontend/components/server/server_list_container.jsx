@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ServerList from "./server_list";
 import { logOut } from "../../actions/session_actions";
 import {fetchServers} from "../../actions/server_actions";
-import { Link } from "react-router-dom";
+import {openModal} from "../../actions/modal_actions";
 
 const mSP = state => {
     return(
@@ -19,6 +19,7 @@ const mDP = dispatch => {
         {
             logOut: () => dispatch(logOut()),
             fetchServers: sessionID => dispatch(fetchServers(sessionID)),
+            openModal: field => dispatch(openModal(field)),
         }
     );
 };

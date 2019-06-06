@@ -8,10 +8,15 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 class ChannelList extends React.Component{
     render(){
+        const server = this.props.servers[this.props.match.params.id];
+        let serverName = "";
+        if(server !== undefined){
+            serverName = server.server_name;
+        }
         return(
             <div className="channelColumn">
                 <section className="channelList">
-                    <section className="channelHeader">Server Name</section>
+                    <section className="channelHeader">{serverName}</section>
                     <ChannelIndex />
                 </section>
 
@@ -29,6 +34,7 @@ class ChannelList extends React.Component{
 
 const mSP = state => {
     return ({
+        servers: state.entities.servers,
         channels: state.entities.channels,
         users: state.entities.users,
         current_user_id: state.session.id,

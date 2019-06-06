@@ -23,7 +23,7 @@ export const deleteServer = (serverID) => {
 export const createServer = server => {
     return $.ajax({
         method: "POST",
-        url: `/api/servers/${server.id}`,
+        url: `/api/servers`,
         data: { server },
     });
 };

@@ -1,5 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 class ServerList extends React.Component{
     constructor(props){
@@ -25,7 +27,15 @@ class ServerList extends React.Component{
         return(
             <section className="serverList">
                 <ul className="serverIndex">
+                    <NavLink to="/me" className="meServer" activeClassName="currentServer">
+                        <FontAwesomeIcon icon={faHome} />
+                    </NavLink>
+
+                    <hr className="serverHR"/>
+
                     {serverList}
+
+                    <div className="createServer" onClick={() => dispatch(this.props.openModal("createServer"))}>+</div>
                 </ul>
                 
             </section>

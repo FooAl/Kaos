@@ -9,12 +9,13 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :servers, only: [:index, :show, :create, :destroy, :edit] do
       resources :channels, only: [:index, :show, :create]
+      resources :user_server_links, only: [:create, :index]
     end
     resources :channels, only: [:edit, :destroy] do
       resources :messages, only: [:index, :create]
     end
     resources :messages, only: [:edit, :destroy]
-
+    resources :user_server_links, only: [:destroy]
   end
 
 end

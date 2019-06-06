@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import CreateChannelModal from "../channel/create_channel_modal";
 import EditChannelModal from "../channel/edit_channel_modal";
 import DeleteChannelModal from "../channel/delete_channel_modal";
+import CreateServerModal from "../server/create_server_modal";
 
 //import forms here
 
@@ -24,6 +25,9 @@ function Modal ({modal, closeModal}){
         case "deleteChannel":
             component = <DeleteChannelModal />;
             break;
+        case "createServer":
+            component = <CreateServerModal />;
+            break;        
         default: 
             return null;
     }
