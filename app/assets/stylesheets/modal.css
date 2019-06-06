@@ -66,14 +66,25 @@
     font-size: 14px;
     padding: 3px 15px;
     height: 40px;
+    cursor: pointer;
 }
 
 .createChannelFooter .closeCreate{
     color: white;
     font-size: 14px;
     padding: 3px 15px;
-    height: 40px;
+    width: 80px;
     margin: 0px 10px;
+}
+
+.closeCreate div{
+    text-align: center;
+    width: auto;
+}
+
+.closeCreate div:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .createChFormInput{

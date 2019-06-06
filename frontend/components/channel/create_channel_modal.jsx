@@ -34,7 +34,7 @@ class createChannelModal extends React.Component{
                         <input type="text" value={this.state.body} onChange={this.update("body")} />
                     </section>
                     <section className="createChannelFooter">
-                        <span className="closeCreate" onClick={this.props.closeModal}>Cancel</span>
+                        <span className="closeCreate" ><div onClick={this.props.closeModal}>Cancel</div></span>
                         <input type="submit" className="createChannelButton" value="Create Channel" />
                     </section>
                 </form> 

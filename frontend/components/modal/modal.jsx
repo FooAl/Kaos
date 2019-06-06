@@ -2,6 +2,8 @@ import React from 'react';
 import {closeModal} from "../../actions/modal_actions";
 import {connect} from "react-redux";
 import CreateChannelModal from "../channel/create_channel_modal";
+import EditChannelModal from "../channel/edit_channel_modal";
+import DeleteChannelModal from "../channel/delete_channel_modal";
 
 //import forms here
 
@@ -15,6 +17,12 @@ function Modal ({modal, closeModal}){
         //cases for each modal
         case "createChannel":
             component = <CreateChannelModal />;
+            break;
+        case "editChannel":
+            component = <EditChannelModal />;
+            break;
+        case "deleteChannel":
+            component = <DeleteChannelModal />;
             break;
         default: 
             return null;

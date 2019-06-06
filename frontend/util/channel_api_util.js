@@ -15,7 +15,7 @@ export const fetchChannel = (serverID, channelID) => {
 export const deleteChannel = (channelID) => {
     return $.ajax({
         method: "DELETE",
-        url: `/api/servers/${channelID}`,
+        url: `/api/channels/${channelID}`,
     });
 };
 
@@ -26,3 +26,12 @@ export const createChannel = channel => {
         data: {channel},
     });
 };
+
+
+export const editChannel = channel => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/channels/${channel.id}/edit`,
+        data: {channel},
+    })
+}

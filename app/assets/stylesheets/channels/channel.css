@@ -89,6 +89,7 @@
     margin: 3px 0px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 200px;
     border-radius: 3px;
     
@@ -98,6 +99,19 @@
     background-color: #2a2d30;
 }
 
+.channel:hover .editChannel, 
+.channel:hover .deleteChannel{
+    color: #82868b;
+    opacity: 1;
+    transition: .25s;
+}
+
+.channel .editChannel:hover,
+.channel .deleteChannel:hover{
+    color: white;
+    cursor: pointer;
+    transition: .25s;
+}
 
 .channelHash{
     color: #72767d;
@@ -116,10 +130,33 @@
     bottom: 0px;
 }
 
+.editChannel, .deleteChannel{
+    opacity: 0;
+}
+
 .currentChannel .channel{
     background-color: #40444b;
 }
 
-.currentChannel li .channelName{
+.buttons{
+    display: flex;
+    width: 35px;
+    justify-content: space-between;
+}
+
+.currentChannel li section .channelName{
     color: white;
 }
+
+.currentChannel .channel section .editChannel,
+.currentChannel .channel section .deleteChannel{
+    color: #82868b;
+    opacity: 1;
+}
+
+.currentChannel .channel section .editChannel:hover,
+.currentChannel .channel section .deleteChannel:hover{
+    color: white;
+
+}
+

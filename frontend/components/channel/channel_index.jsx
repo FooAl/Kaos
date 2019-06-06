@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faCog, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 class ChannelIndex extends React.Component{
@@ -20,10 +20,16 @@ class ChannelIndex extends React.Component{
         let channels = Object.values(this.props.channels)
         const channelList = channels.map(channel => {
             return (
-            <NavLink to={`/channels/1/${channel.id}`} activeClassName="currentChannel">
-                <li key={channel.id} className="channel">
-                    <span className="channelHash"><FontAwesomeIcon icon={faHashtag} /></span>
-                    <span className="channelName">{channel.channel_name}</span>
+                <NavLink to={`/channels/1/${channel.id}`} activeClassName="currentChannel" key={channel.id}>
+                <li className="channel">
+                    <section>
+                        <span className="channelHash"><FontAwesomeIcon icon={faHashtag} /></span>
+                        <span className="channelName">{channel.channel_name}</span>
+                    </section>
+                    <section className="buttons">
+                        <span className="editChannel" onClick={() => dispatch(this.props.openModal("editChannel"))}><FontAwesomeIcon icon={faCog} /></span>
+                        <span className="deleteChannel" onClick={() => dispatch(this.props.openModal("deleteChannel"))}><FontAwesomeIcon icon={faTrash} /></span>
+                    </section>
                 </li>
             </NavLink>
             )
