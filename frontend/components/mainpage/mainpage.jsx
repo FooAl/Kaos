@@ -25,8 +25,8 @@ class mainPage extends React.Component{
             demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Demo User</Link>;
         }else{
             loginButton = <Link to="/me" className="loginButton">Open</Link>;
-            signupButton = <Link to="/me" className="signupButton">Open Discord</Link>;
-            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Open Discord</Link>;
+            signupButton = <Link to="/me" className="signupButton">Open Kaos</Link>;
+            demoButton = <Link to="/me" onClick={this.loginDemo} className="demoLogin">Open Kaos</Link>;
         }
         return(
             <div className="mainpage">
