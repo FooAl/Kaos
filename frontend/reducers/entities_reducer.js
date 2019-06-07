@@ -10,6 +10,7 @@ const entitiesReducer = combineReducers({
     messages: MessagesReducer,
     channels: ChannelsReducer,
     servers: ServersReducer,
+    joins: JoinsReducer,
 });
 
 export default entitiesReducer;

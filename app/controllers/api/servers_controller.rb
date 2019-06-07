@@ -28,7 +28,6 @@ class Api::ServersController < ApplicationController
     end
 
     def destroy
-        debugger
         @server = Server.find(params[:id])
         @server.destroy
     end

@@ -5,7 +5,7 @@ import {openModal} from "../../actions/modal_actions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faTrash} from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faTrash, faCogs, faShare, faAddressBook} from '@fortawesome/free-solid-svg-icons';
 
 class ChannelList extends React.Component{
     render(){
@@ -18,8 +18,17 @@ class ChannelList extends React.Component{
             <div className="channelColumn">
                 <section className="channelList">
                     <section className="channelHeader">
-                        {serverName}
+                        <span>{serverName}</span>
                         <section className="serverButtons">
+                            <div className="editServer" onClick={() => dispatch(this.props.openModal("shareServer"))}>
+                                <FontAwesomeIcon icon={faAddressBook} />
+                            </div>
+                            <div className="editServer" onClick={() => dispatch(this.props.openModal("editServer"))}>
+                                <FontAwesomeIcon icon={faCogs} />
+                            </div>
+                            <div className="editServer" onClick={() => dispatch(this.props.openModal("leaveServer"))}>
+                                <FontAwesomeIcon icon={faShare} />
+                            </div>
                             <div className="deleteServer" onClick={() => dispatch(this.props.openModal("deleteServer"))}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </div>

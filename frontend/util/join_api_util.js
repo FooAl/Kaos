@@ -5,6 +5,7 @@ export const fetchLinks = serverID => {
     });
 };
 
+
 export const createLink = link => {
     return $.ajax({
         method: "POST",

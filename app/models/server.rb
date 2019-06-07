@@ -23,4 +23,12 @@ class Server < ApplicationRecord
         foreign_key: :server_admin_id,
         class_name: :User
 
+    after_initialize :ensure_invite_key
+    
+    private
+
+    def ensure_invite_key
+        self.invite_key ||= SecureRandom.base64(8)
+    end
+
 end

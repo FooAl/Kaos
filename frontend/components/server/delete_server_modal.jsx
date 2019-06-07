@@ -19,11 +19,13 @@ class deleteServerModal extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        debugger
-        this.props.processForm(this.props.history.location.pathname.split("/")[2]);        
+        this.props.processForm(this.props.history.location.pathname.split("/")[2]).then(
+            server => {
+            this.props.clearServers();
+            this.props.fetchServers(this.props.currentUserID)
+            }
+        );        
         this.props.closeModal();
-        this.props.clearServers();
-        this.props.fetchServers(this.props.currentUserID)
         this.props.history.push("/me");
     }
 

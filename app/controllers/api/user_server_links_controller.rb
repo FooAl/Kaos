@@ -1,8 +1,14 @@
 class Api::UserServerLinksController < ApplicationController
 
     def create
-        @link = UserServerLink.new(user_id: params[:link][:user_id], server_id: params[:link][:server_id])
-        @link.save
+        if params[:link][:server_id]
+            @link = UserServerLink.new(user_id: params[:link][:user_id], server_id: params[:link][:server_id])
+            @link.save
+        elsif params[:link][:invite_key]
+            server = Server.find_by(invite_key: params[:link][:invite_key])
+            @link = UserServerLink.new(user_id: params[:link][:user_id], server_id: server.id)
+            @link.save
+        end
     end
 
     def destroy

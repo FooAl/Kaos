@@ -6,6 +6,11 @@ import EditChannelModal from "../channel/edit_channel_modal";
 import DeleteChannelModal from "../channel/delete_channel_modal";
 import CreateServerModal from "../server/create_server_modal";
 import DeleteServerModal from "../server/delete_server_modal";
+import EditServerModal from "../server/edit_server_modal";
+import InviteKeyModal from "../server/invite_key_modal";
+import JoinServerModal from "../server/join_server_modal";
+import LeaveServerModal from "../server/leave_server_modal";
+import SwitchFormModal from "../server/switch_modal";
 
 //import forms here
 
@@ -31,6 +36,21 @@ function Modal ({modal, closeModal}){
             break;        
         case "deleteServer":
             component = <DeleteServerModal />;
+            break;
+        case "editServer":
+            component = <EditServerModal />;
+            break;
+        case "shareServer":
+            component = <InviteKeyModal />;
+            break;
+        case "joinServer":
+            component = <JoinServerModal />;
+            break;
+        case "leaveServer":
+            component = <LeaveServerModal />;
+            break;
+        case "switchForm":
+            component = <SwitchFormModal />;
             break;
         default: 
             return null;

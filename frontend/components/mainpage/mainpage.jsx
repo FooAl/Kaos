@@ -9,7 +9,7 @@ class mainPage extends React.Component{
 
     loginDemo(){
         let demoUser = {
-            email: "Test@test.test",
+            email: "krawling@kaos.com",
             password: "starwars",
         }
         this.props.logIn(demoUser);

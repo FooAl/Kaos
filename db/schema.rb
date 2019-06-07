@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_142057) do
+ActiveRecord::Schema.define(version: 2019_06_07_015810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,4 +66,9 @@ ActiveRecord::Schema.define(version: 2019_06_06_142057) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "channels", "servers", on_delete: :cascade
+  add_foreign_key "messages", "channels", on_delete: :cascade
+  add_foreign_key "messages", "users", on_delete: :cascade
+  add_foreign_key "user_server_links", "servers", on_delete: :cascade
+  add_foreign_key "user_server_links", "users", on_delete: :cascade
 end

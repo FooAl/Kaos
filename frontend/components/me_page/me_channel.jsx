@@ -10,7 +10,9 @@ class MeIndex extends React.Component {
         return(
             <div className="channelColumn">
                 <section className="channelList">
-                    <section className="channelHeader">{this.props.users[this.props.current_user_id].discord_username}</section>
+                    <section className="channelHeader">
+                        <span>{this.props.users[this.props.current_user_id].discord_username}</span>
+                    </section>
                 </section>
 
                 <section className="subChannelFooter">

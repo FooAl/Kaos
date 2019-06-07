@@ -37,7 +37,7 @@ class ServerList extends React.Component{
 
                     {serverList}
 
-                    <div className="createServer" onClick={() => dispatch(this.props.openModal("createServer"))}>+</div>
+                    <div className="createServer" onClick={() => dispatch(this.props.openModal("switchForm"))}>+</div>
                 </ul>
                 
             </section>

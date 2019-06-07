@@ -22,7 +22,7 @@ class createServerModal extends React.Component{
         e.preventDefault();
         const userID = this.props.currentUserID;
         let serverID = null;
-        this.props.processForm({server_name: this.state.body, server_admin_id: userID, invite_key: "test"}).then(
+        this.props.processForm({server_name: this.state.body, server_admin_id: userID}).then(
             server => {
                 serverID = server.server.id;
                 this.props.createLink({ user_id: userID, server_id: serverID });
@@ -34,7 +34,7 @@ class createServerModal extends React.Component{
     render(){
         return(
             <div className="createChannelModal">
-                <p>Create Server</p>
+                <p>CREATE SERVER</p>
                 <form className="createChannelInput" onSubmit={this.handleSubmit}>
                     <section className="createChFormInput">
                         <span>SERVER NAME</span>
