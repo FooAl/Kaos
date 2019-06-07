@@ -1,5 +1,7 @@
 # **Kaos**
 
+[Live Demo!](https://diskaos.herokuapp.com/)
+
 Kaos is a Discord clone providing a platform for text chat between multiple users, mostly built in the span of 10 days. It uses the Javascript libraries React and Redux for the frontend, and Ruby on Rails and postgreSQL for the backend. To maintain a live chat, it utilizess Rail's Action Cables to create websockets.
 
 ## Features
