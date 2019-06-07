@@ -22,7 +22,7 @@ class joinServerModal extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const userID = this.props.currentUserID;
-        this.props.processForm({ user_id: userID, invite_key: this.state.body }).then(
+        this.props.processForm({user_id: userID, invite_key: this.state.body}).then(
             () => {
             this.props.clearServers();
             this.props.fetchServers(this.props.currentUserID);

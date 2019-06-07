@@ -6,10 +6,10 @@ export const fetchLinks = serverID => {
 };
 
 
-export const createLink = link => {
+export const createLink = (link) => {
     return $.ajax({
         method: "POST",
-        url: `/api/servers/${link.serverID}/user_server_links`,
+        url: `/api/user_server_links`,
         data: {link},
     });
 };

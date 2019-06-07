@@ -22,6 +22,7 @@ class ChannelIndex extends React.Component{
         {
             this.setState({channels: []});
             this.props.clearChannels();
+            this.props.clearMessages();
             this.props.fetchChannels(this.props.history.location.pathname.split("/")[2]);
         }
     }

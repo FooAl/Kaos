@@ -1,7 +1,7 @@
 class Api::UserServerLinksController < ApplicationController
 
     def create
-        if params[:link][:server_id]
+            if params[:link][:server_id]
             @link = UserServerLink.new(user_id: params[:link][:user_id], server_id: params[:link][:server_id])
             @link.save
         elsif params[:link][:invite_key]
