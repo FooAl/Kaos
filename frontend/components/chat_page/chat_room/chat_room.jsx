@@ -15,14 +15,14 @@ class ChatRoom extends React.Component{
 
     componentDidMount(){
         App.cable.subscriptions.create(
-            {channel: "ChatChannel"},
+            { channel: "ChatChannel" },
             {
                 received: data => {
                     this.setState({
                         messages: this.state.messages.concat(data)
                     });
                 },
-                speak: function(data){return this.perform("speak",data);}
+                speak: function (data) { return this.perform("speak", data); }
             }
         );
         this.props.fetchMessages(this.props.match.params.id);
@@ -31,13 +31,26 @@ class ChatRoom extends React.Component{
     componentDidUpdate(prevProps){
         if (prevProps.match.params.id !== this.props.match.params.id)
         {
+            // App.cable.subscriptions.create(
+            //     { channel: "ChatChannel" },
+            //     {
+            //         received: data => {
+            //             this.setState({
+            //                 messages: this.state.messages.concat(data)
+            //             });
+            //         },
+            //         speak: function (data) { return this.perform("speak", data); }
+            //     }
+            // );
             this.setState({messages: []});
             this.props.clearMessages();
             this.props.fetchMessages(this.props.match.params.id);
         }
         if(this.bottom.current !== null){
             this.bottom.current.scrollIntoView();
+            
         }
+        
     }
 
 
