@@ -15,6 +15,7 @@ const mDP = dispatch => {
     return ({
         fetchMessages: channelID => dispatch(fetchMessages(channelID)),
         clearMessages: () => dispatch(clearMessages()),
+        // receiveServerUsers: serverID => dispatch(receiveServerUsers(serverID)),
     });
 };
 

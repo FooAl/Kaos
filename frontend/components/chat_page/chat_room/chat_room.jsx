@@ -14,13 +14,21 @@ class ChatRoom extends React.Component{
     }
 
     componentDidMount(){
+        if (App.cable.subscriptions.subscriptions[0] !== undefined){
+            App.cable.subscriptions.subscriptions[0].unsubscribe();
+        }
         App.cable.subscriptions.create(
-            { channel: "ChatChannel" },
+            { channel: "ChatChannel",
+                channel_id: this.props.match.params.id  },
             {
                 received: data => {
-                    this.setState({
-                        messages: this.state.messages.concat(data)
-                    });
+                    if(data.type === "message"){
+                        this.setState({
+                            messages: this.state.messages.concat(data)
+                        });
+                    }else if(data.type === "users"){
+                        // this.props.receiveServerUsers(data.server_id);
+                    }
                 },
                 speak: function (data) { return this.perform("speak", data); }
             }
@@ -29,19 +37,26 @@ class ChatRoom extends React.Component{
     }
 
     componentDidUpdate(prevProps){
+        
         if (prevProps.match.params.id !== this.props.match.params.id)
         {
-            // App.cable.subscriptions.create(
-            //     { channel: "ChatChannel" },
-            //     {
-            //         received: data => {
-            //             this.setState({
-            //                 messages: this.state.messages.concat(data)
-            //             });
-            //         },
-            //         speak: function (data) { return this.perform("speak", data); }
-            //     }
-            // );
+            debugger
+            App.cable.subscriptions.subscriptions[0].unsubscribe();
+            App.cable.subscriptions.create(
+                { channel: "ChatChannel",
+                channel_id: this.props.match.params.id },
+                {
+                    received: data => {
+                        this.setState({
+                            messages: this.state.messages.concat(data)
+                        });
+                        if (data.type === 'users'){
+                            dispatch(receiveAllUsers())
+                        }
+                    },
+                    speak: function (data) { return this.perform("speak", data); }
+                }
+            );
             this.setState({messages: []});
             this.props.clearMessages();
             this.props.fetchMessages(this.props.match.params.id);
@@ -50,7 +65,7 @@ class ChatRoom extends React.Component{
             this.bottom.current.scrollIntoView();
             
         }
-        
+        debugger
     }
 
 

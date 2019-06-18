@@ -1,10 +1,10 @@
 class ChannelChannel < ApplicationCable::Channel
     def subscribed
-        stream_for "channel_channel"
+        stream_for ""
     end
 
     def speak(data)
-
+        channel = Channel.create()
         # socket = 
     end
 

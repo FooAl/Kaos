@@ -1,6 +1,11 @@
 class ChatChannel < ApplicationCable::Channel
     def subscribed
-        stream_for "chat_channel"
+        # debugger
+        server_id = Channel.find(params[:channel_id]).server
+        socket = {type: "users", server_id: server_id}
+        ChatChannel.broadcast_to(params[:channel_id], socket)
+        stream_for params[:channel_id]
+        
     end
 
     def speak(data)
@@ -13,8 +18,9 @@ class ChatChannel < ApplicationCable::Channel
                     updated_at: message.updated_at,
                     type: "message"
                 }
-        ChatChannel.broadcast_to("chat_channel", socket)
+        ChatChannel.broadcast_to(message.channel_id, socket)
     end
+
 
     def unsubscribed
     end
