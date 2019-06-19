@@ -7,7 +7,8 @@ class ChatChannel < ApplicationCable::Channel
         #     users_info << [user.id, user.discord_username, user.email, user.profile_icon_url]
         # end
         user = User.find(params[:user_id])
-        socket = {type: "user", user: user}
+        user_info = {discord_username: user.discord_username, id: user.id, email: user.email, profile_icon_url: user.profile_icon_url}
+        socket = {type: "user", user: user_info}
         ChatChannel.broadcast_to(params[:channel_id], socket)
         stream_for params[:channel_id]
         # debugger
