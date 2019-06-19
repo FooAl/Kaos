@@ -1,10 +1,16 @@
 class ChatChannel < ApplicationCable::Channel
     def subscribed
         # debugger
-        server_id = Channel.find(params[:channel_id]).server
-        socket = {type: "users", server_id: server_id}
+        # users = Channel.find(params[:channel_id]).server.users
+        # users_info = [];
+        # users.each do |user|
+        #     users_info << [user.id, user.discord_username, user.email, user.profile_icon_url]
+        # end
+        user = User.find(params[:user_id])
+        socket = {type: "user", user: user}
         ChatChannel.broadcast_to(params[:channel_id], socket)
         stream_for params[:channel_id]
+        # debugger
         
     end
 

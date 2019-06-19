@@ -2,37 +2,61 @@ import React from "react";
 import MessageForm from "./message_form_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import {merge} from "lodash";
 
 class ChatRoom extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             messages: [],
+            users: this.props.users,
             pastHistory: 50,
         };
         this.bottom = React.createRef();
+        this.userLoaded = this.userLoaded.bind(this);
     }
 
     componentDidMount(){
         if (App.cable.subscriptions.subscriptions[0] !== undefined){
             App.cable.subscriptions.subscriptions[0].unsubscribe();
         }
+        // debugger
         App.cable.subscriptions.create(
             { channel: "ChatChannel",
-                channel_id: this.props.match.params.id  },
+                channel_id: this.props.match.params.id,
+                user_id: this.props.session},
             {
                 received: data => {
                     if(data.type === "message"){
                         this.setState({
                             messages: this.state.messages.concat(data)
                         });
-                    }else if(data.type === "users"){
-                        // this.props.receiveServerUsers(data.server_id);
+                    }
+                    if(data.type === "user"){
+                        this.props.fetchUser(data.user);
+                        // let currentUsers = this.state.users;
+                        // const usersArray = data.users_info;
+                        // usersArray.forEach(user => {
+                        //     // debugger
+                        //     if(currentUsers[user[0]] === undefined){
+                        //         let id = user[0];
+                        //         merge({}, currentUsers, {
+                        //             id: {discord_username: user[1], id: user[0],
+                        //                 email: user[2], profile_icon_url: user[3]}
+                        //     //  currentUsers[user[0]] = {discord_username: user[1], id: user[0],
+                        //     //     email: user[2], profile_icon_url: user[3]};}
+                        //         });
+                        //     }
+                        // });
+                        // this.setState({
+                        //     users: currentUsers
+                        // });
                     }
                 },
                 speak: function (data) { return this.perform("speak", data); }
             }
         );
+        // debugger
         this.props.fetchMessages(this.props.match.params.id);
     }
 
@@ -40,18 +64,39 @@ class ChatRoom extends React.Component{
         
         if (prevProps.match.params.id !== this.props.match.params.id)
         {
-            debugger
+            // debugger
             App.cable.subscriptions.subscriptions[0].unsubscribe();
             App.cable.subscriptions.create(
                 { channel: "ChatChannel",
                 channel_id: this.props.match.params.id },
                 {
                     received: data => {
-                        this.setState({
-                            messages: this.state.messages.concat(data)
-                        });
-                        if (data.type === 'users'){
-                            dispatch(receiveAllUsers())
+                        if (data.type === "message") {
+                            this.setState({
+                                messages: this.state.messages.concat(data)
+                            });
+                        }
+                        if (data.type === "users") {
+                            this.props.fetchUser(data.user);
+                            // let currentUsers = this.state.users;
+                            // const usersArray = data.users_info;
+                            // usersArray.forEach(user => {
+                            //     debugger
+                            //     if (currentUsers[user[0]] === undefined) {
+                            //         let id = user[0];
+                            //         merge({}, currentUsers, {
+                            //             id: {
+                            //                 discord_username: user[1], id: user[0],
+                            //                 email: user[2], profile_icon_url: user[3]
+                            //             }
+                            //             //  currentUsers[user[0]] = {discord_username: user[1], id: user[0],
+                            //             //     email: user[2], profile_icon_url: user[3]};}
+                            //         });
+                            //     }
+                            // });
+                            // this.setState({
+                            //     users: currentUsers
+                            // });
                         }
                     },
                     speak: function (data) { return this.perform("speak", data); }
@@ -59,13 +104,14 @@ class ChatRoom extends React.Component{
             );
             this.setState({messages: []});
             this.props.clearMessages();
+            // debugger
             this.props.fetchMessages(this.props.match.params.id);
         }
         if(this.bottom.current !== null){
             this.bottom.current.scrollIntoView();
             
         }
-        debugger
+        // debugger
     }
 
 
@@ -103,10 +149,19 @@ class ChatRoom extends React.Component{
         }
     }
 
+    userLoaded(user_id, loadedUsers){
+        // debugger
+        if(loadedUsers[user_id] === undefined){
+            return "loading";
+        }else{
+            return loadedUsers[user_id].discord_username;
+        }
+    }
+
     render(){
         let oldMessages = Object.values(this.state.messages);
         let newMessages = Object.values(this.props.messages);
-        let {users} = this.props;
+        let users = this.props.users;
         const messageList = newMessages.concat(oldMessages).map(message => {
             const time = this.convertTime(message.created_at);
             const day = this.convertDay(message.created_at);
@@ -117,7 +172,7 @@ class ChatRoom extends React.Component{
                         <img className="messageIcon" src={window.iconGreen}/>
                         <section className="messageText">
                             <section className="messageAuthor">
-                                {users[message.user_id].discord_username} <span className="messageDate"> 
+                                {this.userLoaded(message.user_id, users)} <span className="messageDate"> 
                                     {day} at {time}
                                 </span>
                             </section>
