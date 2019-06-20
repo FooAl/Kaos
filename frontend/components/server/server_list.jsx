@@ -9,7 +9,7 @@ class ServerList extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchServers(this.props.currentSessionid, true);
+        this.props.fetchServers(this.props.currentSessionid);
         // App.cable.subscriptions.create(
         //     {channel: "ChannelChannel",
         //     server_id: this.props.match.params.id},
