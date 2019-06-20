@@ -20,7 +20,6 @@ class ChatRoom extends React.Component{
         if (App.cable.subscriptions.subscriptions[0] !== undefined){
             App.cable.subscriptions.subscriptions[0].unsubscribe();
         }
-        // debugger
         App.cable.subscriptions.create(
             { channel: "ChatChannel",
                 channel_id: this.props.match.params.id,
@@ -34,29 +33,11 @@ class ChatRoom extends React.Component{
                     }
                     if(data.type === "user"){
                         this.props.fetchUser(data.user);
-                        // let currentUsers = this.state.users;
-                        // const usersArray = data.users_info;
-                        // usersArray.forEach(user => {
-                        //     // debugger
-                        //     if(currentUsers[user[0]] === undefined){
-                        //         let id = user[0];
-                        //         merge({}, currentUsers, {
-                        //             id: {discord_username: user[1], id: user[0],
-                        //                 email: user[2], profile_icon_url: user[3]}
-                        //     //  currentUsers[user[0]] = {discord_username: user[1], id: user[0],
-                        //     //     email: user[2], profile_icon_url: user[3]};}
-                        //         });
-                        //     }
-                        // });
-                        // this.setState({
-                        //     users: currentUsers
-                        // });
                     }
                 },
                 speak: function (data) { return this.perform("speak", data); }
             }
         );
-        // debugger
         this.props.fetchMessages(this.props.match.params.id);
     }
 
@@ -64,7 +45,6 @@ class ChatRoom extends React.Component{
         
         if (prevProps.match.params.id !== this.props.match.params.id)
         {
-            // debugger
             App.cable.subscriptions.subscriptions[0].unsubscribe();
             App.cable.subscriptions.create(
                 { channel: "ChatChannel",
@@ -78,25 +58,6 @@ class ChatRoom extends React.Component{
                         }
                         if (data.type === "users") {
                             this.props.fetchUser(data.user);
-                            // let currentUsers = this.state.users;
-                            // const usersArray = data.users_info;
-                            // usersArray.forEach(user => {
-                            //     debugger
-                            //     if (currentUsers[user[0]] === undefined) {
-                            //         let id = user[0];
-                            //         merge({}, currentUsers, {
-                            //             id: {
-                            //                 discord_username: user[1], id: user[0],
-                            //                 email: user[2], profile_icon_url: user[3]
-                            //             }
-                            //             //  currentUsers[user[0]] = {discord_username: user[1], id: user[0],
-                            //             //     email: user[2], profile_icon_url: user[3]};}
-                            //         });
-                            //     }
-                            // });
-                            // this.setState({
-                            //     users: currentUsers
-                            // });
                         }
                     },
                     speak: function (data) { return this.perform("speak", data); }
@@ -104,14 +65,12 @@ class ChatRoom extends React.Component{
             );
             this.setState({messages: []});
             this.props.clearMessages();
-            // debugger
             this.props.fetchMessages(this.props.match.params.id);
         }
         if(this.bottom.current !== null){
             this.bottom.current.scrollIntoView();
             
         }
-        // debugger
     }
 
 

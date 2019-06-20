@@ -1,8 +1,8 @@
-export const fetchServers = sessionID => {
+export const fetchServers = (sessionID, public) => {
     return $.ajax({
         method: "GET",
         url: `/api/servers/`,
-        data: {sessionID}
+        data: {sessionID, public}
     });
 };
 

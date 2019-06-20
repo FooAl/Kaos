@@ -17,6 +17,12 @@ export const fetchChannel = (serverID, channelID) => dispatch => {
     );
 };
 
+export const fetchDMs = (userID) => dispatch => {
+    return(
+        APIUtil.fetchChannel(userID).then(channels => dispatch(receiveChannels(channels)))
+    );
+};
+
 export const createChannel = channel => dispatch => {
     return(
         APIUtil.createChannel(channel).then(channel => dispatch(receiveChannel(channel)))

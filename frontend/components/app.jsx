@@ -22,7 +22,7 @@ const App = () => {
                 <AuthRoute path="/login" component={SessionForm}/>
                 <ProtectedRoute path="/channels" component={ServerPage}/>
                 <ProtectedRoute path="/me" component={MePage}/>
-                {/* logged in */}
+                
                 <Route exact path="/" component={MainPage}/>
             </Switch>
         </div>

@@ -6,6 +6,11 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { logOut } from "../../actions/session_actions";
 
 class MeIndex extends React.Component {
+
+    componentDidMount(){
+        this.props.fetchDMs(this.props.userID);
+    }
+
     render() {
         return(
             <div className="channelColumn">

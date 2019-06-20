@@ -22,7 +22,7 @@ class deleteServerModal extends React.Component{
         this.props.processForm(this.props.history.location.pathname.split("/")[2]).then(
             server => {
             this.props.clearServers();
-            this.props.fetchServers(this.props.currentUserID)
+            this.props.fetchServers(this.props.currentUserID);
             }
         );        
         this.props.closeModal();
