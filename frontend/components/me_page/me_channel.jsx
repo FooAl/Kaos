@@ -3,12 +3,13 @@ import { withRouter, Link } from "react-router-dom";
 import {connect} from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {fetchServers} from "../../actions/server_actions";
 import { logOut } from "../../actions/session_actions";
 
 class MeIndex extends React.Component {
 
     componentDidMount(){
-        this.props.fetchDMs(this.props.userID);
+        this.props.fetchServers(this.props.current_user_id, false);
     }
 
     render() {
@@ -42,6 +43,7 @@ const mSP = state => {
 const mDP = dispatch => {
     return ({
         logOut: () => dispatch(logOut()),
+        fetchServers: (sessionID, isPublic) => dispatch(fetchServers(sessionID, isPublic)), 
     })
 }
 

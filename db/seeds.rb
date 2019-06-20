@@ -11,6 +11,7 @@ User.create(discord_username: "lurkingFear", email: "lurking@fear.com", password
 
 Server.create(server_name: "KaosServer", server_admin_id: 1, public: true)
 Server.create(server_name: "Sanctuary", server_admin_id: 1, public: true)
+Server.create(server_name: "DM", server_admin_id: 1, public: false)
 
 Channel.create(channel_name: "General", server_id: 1)
 Channel.create(channel_name: "Welcome", server_id: 1)
@@ -26,3 +27,5 @@ Message.create(content: "No one can find me here", user_id: 1, channel_id: 3)
 UserServerLink.create(user_id: 1, server_id: 1)
 UserServerLink.create(user_id: 2, server_id: 1)
 UserServerLink.create(user_id: 1, server_id: 2)
+UserServerLink.create(user_id: 1, server_id: 3)
+UserServerLink.create(user_id: 2, server_id: 3)

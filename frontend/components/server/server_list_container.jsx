@@ -11,8 +11,8 @@ const mSP = state => {
             currentSessionid: state.session.id,
             servers: state.entities.servers
         }
-    )
-}
+    );
+};
 
 const mDP = dispatch => {
     return (

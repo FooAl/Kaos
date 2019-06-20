@@ -1,5 +1,10 @@
 class Api::ServersController < ApplicationController
     def index
+        if params[:isPublic] == "true"
+            @isPublic = true
+        else
+            @isPublic = false
+        end
         @server_links = UserServerLink.where(user_id: params[:sessionID])
         render :index
     end

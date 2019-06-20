@@ -5,9 +5,9 @@ export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const DESTROY_SERVER = "DESTROY_SERVER";
 export const CLEAR_SERVERS = "CLEAR_SERVERS";
 
-export const fetchServers = sessionID => dispatch => {
+export const fetchServers = (sessionID, isPublic) => dispatch => {
     return (
-        APIUtil.fetchServers(sessionID).then(servers => dispatch(receiveServers(servers)))
+        APIUtil.fetchServers(sessionID, isPublic).then(servers => dispatch(receiveServers(servers)))
     );
 };
 
