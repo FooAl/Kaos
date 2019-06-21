@@ -13,12 +13,38 @@ class MeIndex extends React.Component {
     }
 
     render() {
+        
+        let servers = Object.values(this.props.servers);
+        
+        servers = servers.filter(function(server){
+            return server.public === false;
+        });
+        let serverList = [];
+        if (servers[0] !== undefined) {
+            serverList = servers.map(server => {
+                debugger
+                return (
+                    <li key={server.id}>
+                        <Link to={`/me/${server.channels}`}>
+                            <img src={window.iconGreen} className="serverIcon" />
+                        </Link>
+                    </li>
+                )
+            })
+        }
+
         return(
             <div className="channelColumn">
                 <section className="channelList">
                     <section className="channelHeader">
                         <span>{this.props.users[this.props.current_user_id].discord_username}</span>
                     </section>
+                </section>
+
+                <section className="serverList">
+                    <ul className="serverIndex">
+                        {serverList}
+                    </ul>
                 </section>
 
                 <section className="subChannelFooter">
@@ -37,6 +63,7 @@ const mSP = state => {
     return ({
         users: state.entities.users,
         current_user_id: state.session.id,
+        servers: state.entities.servers,
     });
 };
 

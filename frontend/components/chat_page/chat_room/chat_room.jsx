@@ -17,6 +17,7 @@ class ChatRoom extends React.Component{
     }
 
     componentDidMount(){
+        debugger
         if (App.cable.subscriptions.subscriptions[0] !== undefined){
             App.cable.subscriptions.subscriptions[0].unsubscribe();
         }
@@ -109,7 +110,6 @@ class ChatRoom extends React.Component{
     }
 
     userLoaded(user_id, loadedUsers){
-        // debugger
         if(loadedUsers[user_id] === undefined){
             return "loading";
         }else{

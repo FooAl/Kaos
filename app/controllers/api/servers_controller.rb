@@ -6,6 +6,7 @@ class Api::ServersController < ApplicationController
             @isPublic = false
         end
         @server_links = UserServerLink.where(user_id: params[:sessionID])
+        @server_links.each {|server_link| server_link.first_channel = server_link.find_first_channel_id}
         render :index
     end
 

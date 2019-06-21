@@ -25,6 +25,7 @@ class Server < ApplicationRecord
 
     after_initialize :ensure_invite_key
     
+
     private
 
     def ensure_invite_key
