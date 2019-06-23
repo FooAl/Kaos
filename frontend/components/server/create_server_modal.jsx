@@ -21,7 +21,7 @@ class createServerModal extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         const userID = this.props.currentUserID;
-        let serverID = null;
+        let serverID;
         this.props.processForm({server_name: this.state.body, server_admin_id: userID}).then(
             server => {
                 serverID = server.server.id;

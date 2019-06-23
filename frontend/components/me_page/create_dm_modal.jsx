@@ -21,13 +21,21 @@ class createDMModal extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
+        const userID = this.props.currentUserID;
+        let serverID;
+        this.props.processForm({ server_name: "Direct Message", server_admin_id: userID}).then(
+            server => {
+                serverID = server.server.id;
+                this.props.createLink({ user_id: userID, server_id: serverID });
+            }
+        );
         this.props.closeModal();
     }
 
     render() {
         return (
             <div className="createChannelModal">
-                <p>CREATE DIRECT MESSAGE</p>
+                <p>START DIRECT MESSAGE</p>
                 <form className="createChannelInput" onSubmit={this.handleSubmit}>
                     <section className="createChFormInput">
                         <span>USERNAME</span>
