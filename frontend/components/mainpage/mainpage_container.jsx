@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import Mainpage from "./mainpage";
 import { logIn } from "../../actions/session_actions";

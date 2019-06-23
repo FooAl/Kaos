@@ -2,7 +2,6 @@ import React from "react";
 import MessageForm from "./message_form_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
-import {merge} from "lodash";
 
 class ChatRoom extends React.Component{
     constructor(props){
@@ -148,7 +147,6 @@ class ChatRoom extends React.Component{
         if(this.props.channels[this.props.match.params.id] !== undefined){
             channelName = this.props.channels[this.props.match.params.id].channel_name;
         }
-        // const messageList = "This is a test message";
         return (
             <section className="messageList">
                 <header className="messageHeader">

@@ -1,10 +1,9 @@
-import React from "react";
 import { connect } from "react-redux";
 import LoginForm from "./login_form";
 import { logIn, logOut, emptyErrors} from "../../actions/session_actions";
 
 
-const mSP = (state, ownProps) => {
+const mSP = (state) => {
     return (
         {
             errors: state.errors,

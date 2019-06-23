@@ -13,8 +13,6 @@ import LeaveServerModal from "../server/leave_server_modal";
 import SwitchFormModal from "../server/switch_modal";
 import CreateDMModal from "../me_page/create_dm_modal";
 
-//import forms here
-
 function Modal ({modal, closeModal}){
     if (!modal){
         return null;

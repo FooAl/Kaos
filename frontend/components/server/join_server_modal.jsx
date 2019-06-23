@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import { createLink } from "../../actions/join_actions";
 import { clearServers, fetchServers } from "../../actions/server_actions";

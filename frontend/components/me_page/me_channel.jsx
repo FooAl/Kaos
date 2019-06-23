@@ -23,7 +23,6 @@ class MeIndex extends React.Component {
         });
         let serverList = [];
         if (servers[0] !== undefined) {
-            // debugger
             if(servers)
             serverList = servers.map(server => {
                 let otherUser;

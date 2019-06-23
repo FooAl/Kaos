@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,16 +10,6 @@ class ServerList extends React.Component{
 
     componentDidMount(){
         this.props.fetchServers(this.props.currentSessionid);
-        // App.cable.subscriptions.create(
-        //     {channel: "ChannelChannel",
-        //     server_id: this.props.match.params.id},
-        //     {
-        //         received: data => {
-        //             //do nothing right now
-        //         },
-        //         speak: function (data) { return this.perform("speak", data);}
-        //     }
-        // );
     }
 
     render(){

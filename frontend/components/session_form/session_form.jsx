@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SignupForm from "./signup_form_container";
 import LoginForm from "./login_form_container";
 
@@ -28,39 +27,14 @@ class SessionForm extends React.Component {
         this.props.signUp(this.state);
     }
 
-    componentDidMount(){
-        // let base = document.getElementById("base");
-        // base.className = "";
-        // base.classList.add("formBG");
-        // alert("Hey there");
-        // if (this.state.formType === "register"){
-        //     this.setState({ form: <SignupForm /> });
-        // } else if (this.state.formType === "login"){
-        //     this.setState({form: (<p>login form item</p>) });
-        // } else {
-        //     this.setState({form: (<p>error</p>) });
-        // }
-    }
-
-    componentWillUnmount(){
-        // debugger
-        // document.getElementById("base").classList.remove("formBG");
-    }
-
 
     componentDidUpdate(prevProps){
-        //switch formType to other form if prevProps.formType !== this.state.formType
-        //set state.email and state.password to ""
-        
         if (prevProps.match.url !== "/" + this.state.formType) {
             if (this.state.formType === "register") {
                 this.props.history.push("/register");
-                // this.setState({ form: <SignupForm /> });
             } else if (this.state.formType === "login") {
                 this.props.history.push("login");
-                // this.setState({ form: (<p>login form item</p>) });
             } else {
-                // this.setState({ form: (<p>error</p>) });
             }
         }
         
@@ -80,13 +54,10 @@ class SessionForm extends React.Component {
                     <img className="under" src={window.formBG}/>
                     <img className="top" src={window.formSplash}/>
                 </section>
-            {/* <div style="background-image: src:(url);"></div> */}
                 <header className="formPageHeader">
                     <section className="formPageHeaderLeft">
                         <img className="logo" src={window.discordLogo} height="18%"/>
                     </section>
-                    {/* <button onClick={this.update("formType")} value="register">Signup</button> */}
-                    {/* <button onClick={this.update("formType")} value="login">Login</button> */}
                 </header>
                 {form}
             </div>

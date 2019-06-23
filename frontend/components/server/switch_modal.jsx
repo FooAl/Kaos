@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { closeModal, openModal } from "../../actions/modal_actions";
-import { fetchServer } from "../../actions/server_actions";
 
 class switchModal extends React.Component {
     constructor(props) {
