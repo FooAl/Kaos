@@ -1,0 +1,39 @@
+.dmIcon{
+    width: 35px;
+    border-radius: 50%;
+}
+
+.dmUsername{
+    margin: 10px;
+    color: #888b90;
+}
+
+.subDMIndex{
+    height: 100%;
+}
+
+.dmList{
+    background-color: #303237;
+}
+
+.dm{
+    list-style-type: none;
+    margin: 3px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0px 6px;
+    border-radius: 3px;
+    
+}
+
+.serverIndex a{
+    text-decoration: none;
+    cursor: default;
+}
+
+.dm:hover{
+    background-color: #2a2d30;
+    color: white;
+}

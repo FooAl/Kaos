@@ -1,69 +1,64 @@
 import React from "react";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
-import {closeModal} from "../../actions/modal_actions";
-import {createServer} from "../../actions/server_actions";
-import {createLink} from "../../actions/join_actions";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { closeModal } from "../../actions/modal_actions";
+import { createServer } from "../../actions/server_actions";
+import { createChannel } from "../../actions/channel_actions";
+import { createLink } from "../../actions/join_actions";
 
-class createServerModal extends React.Component{
+class createDMModal extends React.Component{
     constructor(props){
         super(props);
         this.state={body: ""};
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field){
         return(e) => {
             this.setState({[field]: e.currentTarget.value});
-        };
+        }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        const userID = this.props.currentUserID;
-        let serverID = null;
-        this.props.processForm({server_name: this.state.body, server_admin_id: userID}).then(
-            server => {
-                serverID = server.server.id;
-                this.props.createLink({ user_id: userID, server_id: serverID });
-            }
-        );
         this.props.closeModal();
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="createChannelModal">
-                <p>CREATE SERVER</p>
+                <p>CREATE DIRECT MESSAGE</p>
                 <form className="createChannelInput" onSubmit={this.handleSubmit}>
                     <section className="createChFormInput">
-                        <span>SERVER NAME</span>
+                        <span>USERNAME</span>
                         <input type="text" value={this.state.body} onChange={this.update("body")} />
                     </section>
                     <section className="createChannelFooter">
                         <span className="closeCreate" ><div onClick={this.props.closeModal}>Cancel</div></span>
-                        <input type="submit" className="createChannelButton" value="Create Server" />
+                        <input type="submit" className="createChannelButton" value="Create DM" />
                     </section>
-                </form> 
+                </form>
             </div>
         )
     }
 
+    
+
 }
 
 const mSP = state => {
-    return{
+    return {
         currentUserID: state.session.id,
-        
-    };
-};
+    }
+}
 
 const mDP = dispatch => {
-    return{
+    return {
         processForm: server => dispatch(createServer(server)),
+        createChannel: channel => dispatch(createChannel(channel)),
         createLink: link => dispatch(createLink(link)),
         closeModal: () => dispatch(closeModal()),
     }
 }
 
-export default withRouter(connect(mSP, mDP)(createServerModal));
+export default withRouter(connect(mSP, mDP)(createDMModal));

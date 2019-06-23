@@ -17,7 +17,6 @@ class ChatRoom extends React.Component{
     }
 
     componentDidMount(){
-        debugger
         if (App.cable.subscriptions.subscriptions[0] !== undefined){
             App.cable.subscriptions.subscriptions[0].unsubscribe();
         }
@@ -143,7 +142,7 @@ class ChatRoom extends React.Component{
             );
         });
         const hash = <FontAwesomeIcon icon={faHashtag} />
-        let channelName = "";
+        let channelName;
         if(this.props.channels[this.props.match.params.id] !== undefined){
             channelName = this.props.channels[this.props.match.params.id].channel_name;
         }

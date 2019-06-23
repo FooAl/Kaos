@@ -21,14 +21,26 @@ class MeIndex extends React.Component {
         });
         let serverList = [];
         if (servers[0] !== undefined) {
+            // debugger
+            if(servers)
             serverList = servers.map(server => {
-                debugger
+                let otherUser;
+                if(server.users.user_1 !== this.props.users[this.props.current_user_id].discord_username){
+                    otherUser = server.users.user_1;
+                }else{
+                    otherUser = server.users.user_2;
+                }
                 return (
-                    <li key={server.id}>
-                        <Link to={`/me/${server.channels}`}>
-                            <img src={window.iconGreen} className="serverIcon" />
+                        <Link to={`/me/${server.first_channel_id}`} key={server.id}>
+                            <li className="dm" >
+                                <section className="channelLeft">
+                                    <img src={window.iconGreen} className="dmIcon" />
+                                    <span className="dmUsername">{otherUser}</span>
+                                </section>
+                                <section className="buttons">
+                                </section>
+                            </li>  
                         </Link>
-                    </li>
                 )
             })
         }
@@ -39,13 +51,20 @@ class MeIndex extends React.Component {
                     <section className="channelHeader">
                         <span>{this.props.users[this.props.current_user_id].discord_username}</span>
                     </section>
+                    <section className="dmList">
+                        <section className="subDMIndex">
+                            <section className="subChannelHeader">
+                                <span>Direct Messages</span>
+                                <span className="subCreateButton">+</span>
+                            </section>
+                            <ul className="serverIndex">
+                                {serverList}
+                            </ul>
+                        </section>
+                    </section>
                 </section>
 
-                <section className="serverList">
-                    <ul className="serverIndex">
-                        {serverList}
-                    </ul>
-                </section>
+                
 
                 <section className="subChannelFooter">
                     <section className="footerUser">

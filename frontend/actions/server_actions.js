@@ -36,7 +36,6 @@ export const editServer = channel => dispatch => {
 }
 
 const receiveServers = servers => {
-    debugger
     return ({
         type: RECEIVE_SERVERS,
         servers

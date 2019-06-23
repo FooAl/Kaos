@@ -16,7 +16,7 @@ Server.create(server_name: "DM", server_admin_id: 1, public: false)
 Channel.create(channel_name: "General", server_id: 1)
 Channel.create(channel_name: "Welcome", server_id: 1)
 Channel.create(channel_name: "Secret Channel", server_id: 2)
-Channel.create(channel_name: "DM", server_id: 3)
+Channel.create(channel_name: "DM", server_id: 3, public: false)
 
 Message.create(content: "This is my server, wahaha", user_id: 1, channel_id: 1)
 Message.create(content: "I'm lurking in your safe space", user_id: 2, channel_id: 1)

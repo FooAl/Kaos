@@ -2,13 +2,14 @@
 #
 # Table name: servers
 #
-#  id              :bigint           not null, primary key
-#  server_name     :string           not null
-#  server_admin_id :integer          not null
-#  public          :boolean          default(TRUE)
-#  invite_key      :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id               :bigint           not null, primary key
+#  server_name      :string           not null
+#  server_admin_id  :integer          not null
+#  public           :boolean          default(TRUE)
+#  invite_key       :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  first_channel_id :integer
 #
 
 class Server < ApplicationRecord
@@ -25,6 +26,9 @@ class Server < ApplicationRecord
 
     after_initialize :ensure_invite_key
     
+    def find_first_channel_id
+        self.first_channel_id = self.channels[0].id
+    end
 
     private
 

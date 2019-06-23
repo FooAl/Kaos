@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_07_015810) do
+ActiveRecord::Schema.define(version: 2019_06_23_052116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_015810) do
     t.integer "server_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "public", default: true
     t.index ["channel_name"], name: "index_channels_on_channel_name"
     t.index ["server_id"], name: "index_channels_on_server_id"
   end
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_015810) do
     t.string "invite_key", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "first_channel_id"
     t.index ["server_admin_id"], name: "index_servers_on_server_admin_id"
   end
 
