@@ -3,12 +3,14 @@ import { withRouter, Link } from "react-router-dom";
 import {connect} from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import {fetchServers} from "../../actions/server_actions";
+import {fetchServers, clearServers} from "../../actions/server_actions";
 import { logOut } from "../../actions/session_actions";
+import {openModal} from "../../actions/modal_actions";
 
 class MeIndex extends React.Component {
 
     componentDidMount(){
+        this.props.clearServers();
         this.props.fetchServers(this.props.current_user_id, false);
     }
 
@@ -55,7 +57,7 @@ class MeIndex extends React.Component {
                         <section className="subDMIndex">
                             <section className="subChannelHeader">
                                 <span>Direct Messages</span>
-                                <span className="subCreateButton">+</span>
+                                <span className="subCreateButton" onClick={() => dispatch(this.props.openModal("createDM"))}>+</span>
                             </section>
                             <ul className="serverIndex">
                                 {serverList}
@@ -89,7 +91,10 @@ const mSP = state => {
 const mDP = dispatch => {
     return ({
         logOut: () => dispatch(logOut()),
+        openModal: field => dispatch(openModal(field)),
         fetchServers: (sessionID, isPublic) => dispatch(fetchServers(sessionID, isPublic)), 
+        clearServers: () => dispatch(clearServers()),
+
     })
 }
 

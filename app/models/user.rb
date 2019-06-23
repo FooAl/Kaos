@@ -38,6 +38,15 @@ class User < ApplicationRecord
         end
     end
 
+    def self.find_by_username(username)
+        user = User.find_by(discord_username: username)
+        if user
+            return user
+        else
+            return nil
+        end
+    end
+
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)

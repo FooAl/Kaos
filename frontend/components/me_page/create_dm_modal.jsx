@@ -2,9 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
-import { createServer } from "../../actions/server_actions";
+import { createServer, fetchServers, clearServers } from "../../actions/server_actions";
 import { createChannel } from "../../actions/channel_actions";
+import { validUser } from "../../actions/user_actions";
 import { createLink } from "../../actions/join_actions";
+import { emptyErrors } from "../../actions/session_actions";
 
 class createDMModal extends React.Component{
     constructor(props){
@@ -21,13 +23,31 @@ class createDMModal extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
+        this.props.emptyErrors();
         const userID = this.props.currentUserID;
         let serverID;
-        this.props.processForm({ server_name: "Direct Message", server_admin_id: userID}).then(
-            server => {
-                serverID = server.server.id;
-                this.props.createLink({ user_id: userID, server_id: serverID });
+        let otherID;
+        let errors = this.props.errors.errors;
+        // const createChannel = this.props.createChannel;
+        // const createLink = this.props.createLink;
+        this.props.validUser({ discord_username: this.state.body, type: "find_by_name"}).then((user) => {
+            debugger
+            otherID = user.user.id
+            if(errors.length === 0){
+                this.props.processForm({ server_name: "Direct Message", server_admin_id: userID, public: false}).then(
+                    server => {
+                        serverID = server.server.id;
+                        debugger
+                        this.props.createChannel({ channel_name: "Direct Message", server_id: serverID, public: false});
+                        this.props.createLink({ user_id: userID, server_id: serverID });
+                        this.props.createLink({ user_id: otherID, server_id: serverID});
+                        this.props.clearServers();
+                        debugger
+                        this.props.fetchServers(userID, false)
+                    }
+                )
             }
+        }
         );
         this.props.closeModal();
     }
@@ -57,6 +77,7 @@ class createDMModal extends React.Component{
 const mSP = state => {
     return {
         currentUserID: state.session.id,
+        errors: state.errors,
     }
 }
 
@@ -66,6 +87,10 @@ const mDP = dispatch => {
         createChannel: channel => dispatch(createChannel(channel)),
         createLink: link => dispatch(createLink(link)),
         closeModal: () => dispatch(closeModal()),
+        validUser: user => dispatch(validUser(user)),
+        emptyErrors: () => dispatch(emptyErrors()),
+        fetchServers: (sessionID, isPublic) => dispatch(fetchServers(sessionID, isPublic)), 
+        clearServers: () => dispatch(clearServers()),
     }
 }
 

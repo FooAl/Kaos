@@ -38,6 +38,8 @@ class ChatRoom extends React.Component{
                 speak: function (data) { return this.perform("speak", data); }
             }
         );
+        this.setState({ messages: [] });
+        this.props.clearMessages();
         this.props.fetchMessages(this.props.match.params.id);
     }
 

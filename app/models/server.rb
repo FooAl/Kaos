@@ -27,7 +27,11 @@ class Server < ApplicationRecord
     after_initialize :ensure_invite_key
     
     def find_first_channel_id
-        self.first_channel_id = self.channels[0].id
+        if self.channels[0]
+            self.first_channel_id = self.channels[0].id
+        else
+            false
+        end
     end
 
     private

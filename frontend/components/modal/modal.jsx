@@ -11,6 +11,7 @@ import InviteKeyModal from "../server/invite_key_modal";
 import JoinServerModal from "../server/join_server_modal";
 import LeaveServerModal from "../server/leave_server_modal";
 import SwitchFormModal from "../server/switch_modal";
+import CreateDMModal from "../me_page/create_dm_modal";
 
 //import forms here
 
@@ -51,6 +52,9 @@ function Modal ({modal, closeModal}){
             break;
         case "switchForm":
             component = <SwitchFormModal />;
+            break;
+        case "createDM":
+            component = <CreateDMModal />;
             break;
         default: 
             return null;

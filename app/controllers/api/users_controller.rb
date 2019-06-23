@@ -1,8 +1,17 @@
 class Api::UsersController < ApplicationController
 
     def index
-        @users = User.all
-        render :index
+        if params[:username][:type] == "find_by_name"
+            @user = User.find_by_username(params[:username][:discord_username])
+            if @user
+                render :show
+            else
+                render json: "User does not exist", status: 401
+            end
+        else
+            @users = User.all
+            render :index
+        end
     end
 
     def create

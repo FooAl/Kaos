@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {closeModal} from "../../actions/modal_actions";
-import {createServer} from "../../actions/server_actions";
+import { createServer, fetchServers, clearServers} from "../../actions/server_actions";
 import {createLink} from "../../actions/join_actions";
 
 class createServerModal extends React.Component{
@@ -22,10 +22,12 @@ class createServerModal extends React.Component{
         e.preventDefault();
         const userID = this.props.currentUserID;
         let serverID;
-        this.props.processForm({server_name: this.state.body, server_admin_id: userID}).then(
+        this.props.processForm({server_name: this.state.body, server_admin_id: userID, public: true}).then(
             server => {
                 serverID = server.server.id;
                 this.props.createLink({ user_id: userID, server_id: serverID });
+                this.props.clearServers();
+                this.props.fetchServers(this.props.currentUserID);
             }
         );
         this.props.closeModal();
@@ -63,6 +65,9 @@ const mDP = dispatch => {
         processForm: server => dispatch(createServer(server)),
         createLink: link => dispatch(createLink(link)),
         closeModal: () => dispatch(closeModal()),
+        fetchServers: sessionID => dispatch(fetchServers(sessionID)),
+        clearServers: () => dispatch(clearServers()),
+
     }
 }
 
