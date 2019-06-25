@@ -9,7 +9,10 @@ import {openModal} from "../../actions/modal_actions";
 
 class MeIndex extends React.Component {
 
-
+    componentDidMount(){
+        this.props.clearServers();
+        this.props.fetchServers(this.props.current_user_id, false);
+    }
 
     render() {
         

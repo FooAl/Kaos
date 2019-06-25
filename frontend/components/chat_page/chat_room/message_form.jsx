@@ -7,11 +7,6 @@ class MessageForm extends React.Component{
         this.state = { body: ""};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
-    componentDidMount() {
-        this.props.clearServers();
-        this.props.fetchServers(this.props.current_user_id, false);
-    }
 
     update(field){
         return(e) => {
