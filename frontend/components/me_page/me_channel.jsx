@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, NavLink, Link } from "react-router-dom";
 import {connect} from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +32,7 @@ class MeIndex extends React.Component {
                     otherUser = server.users.user_2;
                 }
                 return (
-                        <Link to={`/me/${server.first_channel_id}`} key={server.id}>
+                    <NavLink to={`/me/${server.first_channel_id}`} activeClassName="currentDM" key={server.id}>
                             <li className="dm" >
                                 <section className="channelLeft">
                                     <img src={window.iconGreen} className="dmIcon" />
@@ -41,7 +41,7 @@ class MeIndex extends React.Component {
                                 <section className="buttons">
                                 </section>
                             </li>  
-                        </Link>
+                        </NavLink>
                 )
             })
         }

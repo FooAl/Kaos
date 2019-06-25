@@ -8,6 +8,11 @@ class MessageForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
+    componentDidMount() {
+        this.props.clearServers();
+        this.props.fetchServers(this.props.current_user_id, false);
+    }
+
     update(field){
         return(e) => {
             this.setState({[field]: e.currentTarget.value});
@@ -23,10 +28,16 @@ class MessageForm extends React.Component{
     }
     
     render(){
+        let placeholderText;
+        if(this.props.channelName === undefined){
+            placeholderText = "Message"
+        }else{
+            placeholderText = `Message #${ this.props.channelName }`;
+        }
         return(
             <div>
                 <form className="messageInput" onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.body} onChange={this.update("body")} placeholder={`Message #${this.props.channelName}`}/>                    
+                    <input type="text" value={this.state.body} onChange={this.update("body")} placeholder={placeholderText}/>                    
                 </form>
             </div>
         )

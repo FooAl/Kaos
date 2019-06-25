@@ -37,3 +37,15 @@
     background-color: #2a2d30;
     color: white;
 }
+
+.createChFormInput .errorMessage{
+    color: #f04747;
+}
+
+.currentDM .dm{
+    background-color: #40444b;
+}
+
+.currentDM .dm section .dmUsername{
+    color: white;
+}
